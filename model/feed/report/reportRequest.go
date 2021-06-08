@@ -85,7 +85,7 @@ package report
 // 7：原生RTA
 type ReportRequest struct {
 	PerformanceData []string `json:"performanceData,omitempty"` // 必填 取值范围：cost（花费）、cpc（平均点击价格）、impression（展现）、click（点击）、ctr（点击率）、cpm（千次展现成本）、position（上方位平均排名）、conversion（网页转化）、商桥转化（bridgeConversion） 其中（impression,click必填） .另由于转化字段较多，取值可参考转化字段表。针对不同的物料层级，其合法的取值范围不同，（按照第一个请求的字段排序）请参见报告规则
-	IdOnly          bool     `json:"idOnly,omitempty"`          // 是否只需要id
+	IdOnly          *bool    `json:"idOnly,omitempty"`          // 是否只需要id
 	StartDate       string   `json:"startDate,omitempty"`       // 统计开始时间，格式参考： 2010-08-01
 	EndDate         string   `json:"endDate,omitempty"`         // 统计结束时间，格式参考： 2010-08-17
 	LevelOfDetails  int      `json:"levelOfDetails,omitempty"`  // 指定返回的数据层级;

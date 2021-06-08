@@ -23,7 +23,7 @@ type Creative struct {
 	Title                string                `json:"title,omitempty"`                // 创意标题;长度限制：[9, 50];长度限制为字节数限制，1个中文按2个字节计算，英文、数字按1个字节计算，通配符不计入
 	Description1         string                `json:"description1,omitempty"`         // 创意描述第一行;长度限制：[9, 80];长度限制为字节数限制，1个中文按2个字节计算，英文、数字按1个字节计算，通配符不计入
 	Description2         string                `json:"description2,omitempty"`         // 创意描述第二行;长度限制：[0, 80];长度限制为字节数限制，1个中文按2个字节计算，英文、数字按1个字节计算，通配符不计入
-	Pause                bool                  `json:"pause,omitempty"`                // 暂停/启用创意
+	Pause                *bool                 `json:"pause,omitempty"`                // 暂停/启用创意
 	Status               int                   `json:"status,omitempty"`               // 创意状态
 	MobileDestinationUrl string                `json:"mobileDestinationUrl,omitempty"` // 移动访问网址;长度限制：[1, 1024];网址域名需与账户注册域名相同，其他情况请参考业务限制
 	MobileDisplayUrl     string                `json:"mobileDisplayUrl,omitempty"`     // 移动显示网址;长度限制：[1, 36];取值限制为账户注册域名本身，可通过"查询账户"接口获取，对应字段为regDomain

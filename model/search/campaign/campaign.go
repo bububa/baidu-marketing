@@ -65,19 +65,19 @@ type Campaign struct {
 	Schedule              []model.Schedule            `json:"schedule,omitempty"`              // 计划推广暂停时段
 	BudgetOfflineTime     []model.OfflineTime         `json:"budgetOfflineTime,omitempty"`     // 预算下线时间;数组元素个数限制：最近有过下线时段的7个自然日的下线和上线时段（这7个自然日中若某日期距当前已超过30天，则不返回）;
 	ShowProb              int                         `json:"showProb,omitempty"`              // 创意展现方式;1 - 优选;2 - 轮替
-	Pause                 bool                        `json:"pause,omitempty"`                 // 暂停状态;true - 暂停;false - 启用
+	Pause                 *bool                       `json:"pause,omitempty"`                 // 暂停状态;true - 暂停;false - 启用
 	Status                int                         `json:"status,omitempty"`                // 计划状态
 	PriceRatio            float64                     `json:"priceRatio,omitempty"`            // 移动出价系数
 	PcPriceRatio          float64                     `json:"pcPriceRatio,omitempty"`          // 计算机出价系数
 	BidPrefer             int                         `json:"bidPrefer,omitempty"`             // 计划出价类型
-	AdType                int                         `json:"adType,omitempty"`                // 计划类型
+	AdType                *int                        `json:"adType,omitempty"`                // 计划类型
 	BusinessPointId       int64                       `json:"businessPointId,omitempty"`       // 推广业务ID
 	BusinessPointName     string                      `json:"businessPointName,omitempty"`     // 推广业务字面
-	SmartRegion           bool                        `json:"smartRegion,omitempty"`           // 商品计划: 智能地域开关
-	PaDevice              int                         `json:"paDevice,omitempty"`              // 商品计划: 计划的投放设备
+	SmartRegion           *bool                       `json:"smartRegion,omitempty"`           // 商品计划: 智能地域开关
+	PaDevice              *int                        `json:"paDevice,omitempty"`              // 商品计划: 计划的投放设备
 	Os                    []string                    `json:"os,omitempty"`                    // 商品计划: 计划的投放设备平台
 	RegionPriceFactor     []model.RegionPriceFactor   `json:"regionPriceFactor,omitempty"`     // 分地域出价系数
 	SchedulePriceFactor   []model.SchedulePriceFactor `json:"schedulePriceFactor,omitempty"`   // 分时段出价系数
-	MarketingTargetId     int                         `json:"marketingTargetId,omitempty"`     // 营销目标类型
+	MarketingTargetId     *int                        `json:"marketingTargetId,omitempty"`     // 营销目标类型
 	ShopType              int                         `json:"shopType,omitempty"`              // 电商店铺类型
 }

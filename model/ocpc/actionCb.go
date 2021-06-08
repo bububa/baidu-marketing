@@ -15,8 +15,8 @@ type ActionCbRequest struct {
 }
 
 func (r ActionCbRequest) unsignedUrl() string {
-	link := strings.Replace(r.CallbackUrl, "{{ATYPE}}", r.AType)
-	link = strings.Replace(link, "{{AVALUE}}", r.AValue)
+	link := strings.Replace(r.CallbackUrl, "{{ATYPE}}", r.AType, -1)
+	link = strings.Replace(link, "{{AVALUE}}", r.AValue, -1)
 	return link
 }
 

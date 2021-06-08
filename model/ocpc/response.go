@@ -15,7 +15,7 @@ func (r Response) IsError() bool {
 }
 
 func (r Response) Error() string {
-	buf, _ := json.Marshal(r.Errors)
+	buf, _ := json.Marshal(r.Header.Errors)
 	return string(buf)
 }
 

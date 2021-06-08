@@ -11,8 +11,10 @@ import (
 
 // sdkclient object
 type SDKClient struct {
-	token string
-	debug bool
+	token    string
+	username string
+	password string
+	debug    bool
 }
 
 // init sdk client
@@ -26,6 +28,11 @@ func (c SDKClient) Token() string {
 	return c.token
 }
 
+func (c *SDKClient) SetUser(username string, password string) {
+	c.username = username
+	c.password = password
+}
+
 // set debug mode
 func (c *SDKClient) SetDebug(debug bool) {
 	c.debug = debug
@@ -35,6 +42,14 @@ func (c *SDKClient) SetDebug(debug bool) {
 func (c *SDKClient) Do(req *model.Request, resp interface{}) error {
 	if req.Header.Token == "" {
 		req.Header.Token = c.token
+	}
+	if req.Header.AccessToken == "" {
+		if req.Header.Username == "" {
+			req.Header.Username = c.username
+		}
+		if req.Header.Password == "" {
+			req.Header.Password = c.password
+		}
 	}
 	reqBytes, _ := json.Marshal(req)
 	var reqResp model.Response

@@ -11,7 +11,7 @@ import (
 // 广告主通过调用该接口，将匹配到的转化数据发送给百度服务器。
 func UploadConvertData(clt *core.SDKClient, req *ocpc.UploadConvertDataRequest) error {
 	if req.Token == "" {
-		req.Token = clt.Token()
+		req.Token = clt.OcpcToken()
 	}
 	reqBytes, err := json.Marshal(req)
 	if err != nil {

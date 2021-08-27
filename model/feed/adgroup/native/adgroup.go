@@ -5,6 +5,8 @@ import "github.com/bububa/baidu-marketing/model/feed/adgroup"
 type Adgroup struct {
 	// AdgroupId 推广单元ID
 	AdgroupId int64 `json:"adgroupFeedId,omitempty"`
+	// AdgroupName 推广单元名称
+	AdgroupName string `json:"adgroupFeedName,omitempty"`
 	// CampaignId 推广计划ID
 	CampaignId int64 `json:"campaignFeedId,omitempty"`
 	// Pause 暂停/启用推广单元

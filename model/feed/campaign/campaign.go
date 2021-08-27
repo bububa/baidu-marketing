@@ -1,5 +1,7 @@
 package campaign
 
+import "github.com/bububa/baidu-marketing/model"
+
 // Campaign 计划对象
 /*
 推广计划状态。此字段仅用于查询接口响应结果。取值范围：枚举值，列表如下
@@ -30,7 +32,7 @@ type Campaign struct {
 	// EndTime 推广结束日期。默认为null，表示长期投放。例如：'2016-12-18'不能早于开始日期
 	EndTime string `json:"endtime,omitempty"`
 	// Schedule 暂停时段设置，对象定义参考下文暂停时段设置
-	Schedule []Schedule `json:"schedule,omitempty"`
+	Schedule []model.Schedule `json:"schedule,omitempty"`
 	// BgtctlType 预算分配控制方式。默认为标准方式取值范围如下：0：匀速。根据流量波动，让预算在整个投放日程中较为平稳的消耗。1：标准。尽快将广告投放出去，预算可能会在短时间内消耗完2：加速。尽可能获得更多展现，对比标准投放预算消耗更快
 	BgtctlType int `json:"bgtctltype,omitempty"`
 	// Pause 是否暂停推广。默认为false。true：推广计划暂停 false：推广计划启用

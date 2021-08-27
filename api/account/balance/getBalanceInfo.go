@@ -15,10 +15,10 @@ func GetBalanceInfo(clt *core.SDKClient, auth model.RequestHeader, productIds []
 			ProductIds: productIds,
 		},
 	}
-	var resp []balance.BalanceInfo
+	var resp balance.GetBalanceInfoResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
 		return nil, err
 	}
-	return resp, nil
+	return resp.Data, nil
 }

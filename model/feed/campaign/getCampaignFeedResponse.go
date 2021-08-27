@@ -1,5 +1,5 @@
 package campaign
 
-type GetCampaignResponse struct {
+type GetCampaignFeedResponse struct {
 	Data []Campaign `json:"data,omitempty"`
 }

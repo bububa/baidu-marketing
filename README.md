@@ -32,6 +32,11 @@
     - 更新账户 [ UpdateAccountFeed(clt \*core.SDKClient, auth model.RequestHeader, budget float64) ([]account.Account, error) ]
   - 计划 (api/feed/campaign)
     - 查询计划 [ GetCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignFeedRequest) ([]campaign.Campaign, error) ]
+  - 单元
+    - 原生推广单元 (api/feed/adgroup/native)
+      - 查询原生推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.GetAdgroupFeedRequest) ([]native.Adgroup, error) ]
+    - 商品推广单元 (api/feed/adgroup/dpa)
+      - 查询商品推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *dpa.GetAdgroupFeedRequest) ([]dpa.Adgroup, error) ]
 - 搜索报告 (api/search/report)
   - 推广报告 [ GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.ReqlTimeRequest) ([]report.RealTimeResult, error) ]
   - 账户实时数据 [ GetAccountLiveData(clt \*core.SDKClient, auth model.RequestHeader, dataType int, device int) ([]report.AccountLiveData, error) ]

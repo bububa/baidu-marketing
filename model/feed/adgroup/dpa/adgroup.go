@@ -13,6 +13,8 @@ type Adgroup struct {
 	FTypes []int `json:"ftypes,omitempty"`
 	// ProductTypes 投放版位，定义同原生
 	ProductTypes []int `json:"producttypes,omitempty"`
+	// Pause 是否暂停推广，定义同原生
+	Pause *bool `json:"pause,omitempty"`
 	// Status 推广单元状态，定义同原生
 	Status int `json:"status,omitempty"`
 	// ProductSetId 商品商品组ID。参照信息流商品组管理

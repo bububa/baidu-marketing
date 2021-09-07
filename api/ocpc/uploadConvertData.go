@@ -1,6 +1,7 @@
 package ocpc
 
 import (
+	"bytes"
 	"encoding/json"
 
 	"github.com/bububa/baidu-marketing/core"
@@ -13,12 +14,15 @@ func UploadConvertData(clt *core.SDKClient, req *ocpc.UploadConvertDataRequest) 
 	if req.Token == "" {
 		req.Token = clt.OcpcToken()
 	}
-	reqBytes, err := json.Marshal(req)
+	buffer := &bytes.Buffer{}
+	encoder := json.NewEncoder(buffer)
+	encoder.SetEscapeHTML(false)
+	err := encoder.Encode(req)
 	if err != nil {
 		return err
 	}
 	var resp ocpc.Response
-	err = clt.Post(UPLOAD_CONVERT_DATA_URL, reqBytes, &resp)
+	err = clt.Post(UPLOAD_CONVERT_DATA_URL, buffer.Bytes(), &resp)
 	if err != nil {
 		return err
 	}

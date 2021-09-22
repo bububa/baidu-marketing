@@ -7,7 +7,7 @@ import (
 )
 
 type GetRealTimeDataRequest struct {
-	RealTimeRequestType *RealTimeRequest `json:"realtimeRequestType"`
+	RealTimeRequestType *RealTimeRequest `json:"realTimeRequestType"`
 }
 
 func (r GetRealTimeDataRequest) Url() string {

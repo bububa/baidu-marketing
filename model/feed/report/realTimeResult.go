@@ -8,6 +8,7 @@ type RealTimeResult struct {
 	Date           string        `json:"date,omitempty"`           // 统计开始时间
 	KPIs           []json.Number `json:"KPIs,omitempty"`           // 按照请求顺序，返回KPI数据数组
 	RelatedIdsList []int64       `json:"relatedIdsList,omitempty"` // 账户id，计划id，单元id
-	TotalRowNumber int64         `json:"totalRowNumber,omitempty"` // 记录总条数
-	PageIndex      int           `json:"pageindex,omitempty"`      // 当前页码
+	RelateIdsList  []json.Number `json:"relateIdsList,omitempty"`  // 账户id，计划id，单元id
+	TotalRowNumber json.Number   `json:"totalRowNumber,omitempty"` // 记录总条数
+	PageIndex      json.Number   `json:"pageindex,omitempty"`      // 当前页码
 }

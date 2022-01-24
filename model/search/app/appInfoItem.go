@@ -1,6 +1,6 @@
 package app
 
-type InfoApp struct {
+type InfoAppItem struct {
 	CampaignId     int     `json:"campaignId"`
 	AdgroupId      int     `json:"adgroupId"`
 	Name           string  `json:"name"`

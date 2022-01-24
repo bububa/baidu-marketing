@@ -1,5 +1,5 @@
 package app
 
 type GetAdgroupAppBindResponse struct {
-	Data []InfoApp `json:"data,omitempty"`
+	Data []InfoAppItem `json:"data,omitempty"`
 }

@@ -6,7 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model/feed/creative"
 )
 
-func getCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) ([]creative.Creative, error) {
+func GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) ([]creative.Creative, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

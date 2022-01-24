@@ -14,7 +14,7 @@ func GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *cre
 	var resp creative.GetCreativeResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err //这里如果传入Ids为混杂的,会一部分正确一部分错误
 	}
 	return resp.Data, nil
 }

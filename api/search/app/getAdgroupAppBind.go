@@ -6,7 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/app"
 )
 
-func GetAdgroupAppBind(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.GetAdgroupAppBindRequest) ([]app.InfoApp, error) {
+func GetAdgroupAppBind(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.GetAdgroupAppBindRequest) ([]app.InfoAppItem, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

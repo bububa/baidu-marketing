@@ -9,6 +9,6 @@ type RealTimeResult struct {
 	Date           string        `json:"date,omitempty"`           // 统计开始时间
 	KPIs           []json.Number `json:"KPIs,omitempty"`           // 按照请求顺序，返回KPI数据数组
 	TotalNumber    int64         `json:"totalNumber,omitempty"`    // 记录总条数
-	TotalRowNumber json.Number   `json:"totalRowNumber,omitempty"` // 记录总条数
+  TotalRowNumber json.Number   `json:"totalRowNumber,omitempty"` // 记录总条数
 	PageIndex      int           `json:"pageIndex,omitempty"`      // 当前页码
 }

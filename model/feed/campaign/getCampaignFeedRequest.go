@@ -26,7 +26,7 @@ shadow - 计划影子的APP信息
 */
 type GetCampaignFeedRequest struct {
 	CampaignFeedFields []string            `json:"campaignFeedFields,omitempty"` // 需要查询的计划属性
-	CampaignFeedIds    []int64             `json:"campaignFeedIds"`              // 查询推广计划ID集合
+	CampaignFeedIds    []int64             `json:"campaignFeedIds,omitempty"`    // 查询推广计划ID集合
 	CampaignFeedFilter *CampaignFeedFilter `json:"campaignFeedFilter,omitempty"` // 计划查询过滤条件
 }
 

@@ -24,9 +24,9 @@ import (
 // deeplink - 应用调起网址
 
 type GetCreativeRequest struct {
-	Ids                []int64  `json:"ids"`            // 查询id集合;类型为单元ID时不超过100个，类型为创意ID时不超过100个，建议分批多次请求
-	CreativeFields     []string `json:"creativeFields"` // 查询推广创意字段
-	IdType             int      `json:"idType"`         // 查询id类型;2 - 单元ID;3 - 创意ID
+	Ids                []int64  `json:"ids"`                // 查询id集合;类型为单元ID时不超过100个，类型为创意ID时不超过100个，建议分批多次请求
+	CreativeFeedFields []string `json:"creativeFeedFields"` // 查询推广创意字段
+	IdType             int      `json:"idType"`             // 查询id类型;2 - 单元ID;3 - 创意ID
 	CreativeFeedFilter struct {
 		Status []int `json:"status"`
 	} `json:"creativeFeedFilter"`

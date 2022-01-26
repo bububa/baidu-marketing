@@ -15,7 +15,7 @@ func GetImage(clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetI
 	var resp image.GetImageResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

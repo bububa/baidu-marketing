@@ -14,7 +14,7 @@ func GetAppList(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.GetA
 	var resp app.GetAppListResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

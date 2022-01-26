@@ -16,7 +16,7 @@ func GetPaymentRecord(clt *core.SDKClient, auth model.RequestHeader, reqBody bal
 	var resp balance.GetPaymentRecordResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return &resp, err
 	}
 	return &resp, nil
 }

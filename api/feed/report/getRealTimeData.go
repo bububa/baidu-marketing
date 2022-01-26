@@ -17,7 +17,7 @@ func GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequ
 	var resp report.GetRealTimeDataResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

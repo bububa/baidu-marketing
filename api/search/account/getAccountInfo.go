@@ -18,7 +18,7 @@ func GetAccountInfo(clt *core.SDKClient, auth model.RequestHeader, accountFields
 	var resp account.GetAccountInfoResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

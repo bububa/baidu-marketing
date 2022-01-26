@@ -17,7 +17,7 @@ func UpdateCreative(clt *core.SDKClient, auth model.RequestHeader, creatives []c
 	var resp creative.UpdateCreativeResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

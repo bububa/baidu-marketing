@@ -16,7 +16,7 @@ func GetJsKpAppList(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.
 	var resp app.GetJsKpAppListResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

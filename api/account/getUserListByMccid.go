@@ -16,7 +16,7 @@ func GetUserListByMccid(clt *core.SDKClient, auth model.RequestHeader) ([]accoun
 	var resp account.GetUserListByMccidResponse
 	err := clt.Do(req, &resp)
 	if err != nil {
-		return nil, err
+		return resp.Data, err
 	}
 	return resp.Data, nil
 }

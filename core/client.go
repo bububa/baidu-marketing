@@ -83,6 +83,37 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) error {
 	return nil
 }
 
+func (c *SDKClient) DoAny(req *model.Request, resp interface{}) error {
+	if req.Header.Token == "" {
+		req.Header.Token = c.token
+	}
+	if req.Header.AccessToken == "" {
+		if req.Header.Username == "" {
+			req.Header.Username = c.username
+		}
+		if req.Header.Password == "" {
+			req.Header.Password = c.password
+		}
+	}
+	reqBytes, _ := json.Marshal(req)
+	var reqResp model.Response
+	err := c.Post(req.Url(), reqBytes, &reqResp)
+	if err != nil {
+		return err
+	}
+	if resp != nil {
+		err = json.Unmarshal(reqResp.Body, resp)
+		if err != nil {
+			return err
+		}
+	}
+	if reqResp.IsError() {
+		return reqResp
+	}
+
+	return nil
+}
+
 // Post data through api
 func (c *SDKClient) Post(reqUrl string, reqBytes []byte, resp interface{}) error {
 	debug.PrintPostJSONRequest(reqUrl, reqBytes, c.debug)

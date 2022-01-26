@@ -66,15 +66,20 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) error {
 	if err != nil {
 		return err
 	}
+
+	var errJson error
+	if resp != nil {
+		errJson = json.Unmarshal(reqResp.Body, resp)
+	}
+	//success with failures
 	if reqResp.IsError() {
 		return reqResp
 	}
-	if resp != nil {
-		err = json.Unmarshal(reqResp.Body, resp)
-		if err != nil {
-			return err
-		}
+
+	if errJson != nil {
+		return errJson
 	}
+
 	return nil
 }
 

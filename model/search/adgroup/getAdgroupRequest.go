@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetAdgroupRequest 查询推广单元API Request
 // 查询推广单元字段
 // adgroupId - 推广单元ID
 // campaignId - 推广计划ID
@@ -23,11 +24,13 @@ import (
 // adType - 广告类型
 // monitorUrl - 单元层级监控url
 // productSetId - 虚拟商品组id
-
 type GetAdgroupRequest struct {
-	Ids           []int64  `json:"ids"`           // 查询id集合;idType=5时，类型为单元ID，不超过5000个；idType=3时，类型为计划ID，不超过100个
-	AdgroupFields []string `json:"adgroupFields"` // 查询推广单元字段
-	IdType        int      `json:"idType"`        // 查询层级;3 - 计划ID;5 - 单元ID
+	// Ids 查询id集合;idType=5时，类型为单元ID，不超过5000个；idType=3时，类型为计划ID，不超过100个
+	Ids []int64 `json:"ids"`
+	// AdgroupFields 查询推广单元字段
+	AdgroupFields []string `json:"adgroupFields"`
+	// IdType 查询层级;3 - 计划ID;5 - 单元ID
+	IdType int `json:"idType"`
 }
 
 func (r GetAdgroupRequest) Url() string {

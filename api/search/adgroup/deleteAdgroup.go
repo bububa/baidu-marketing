@@ -6,8 +6,8 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/adgroup"
 )
 
-// 删除单元
-func DeleteAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroupIds []int64) error {
+// DeleteAdgroup 删除单元
+func DeleteAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroupIds []int64) (*model.ResponseHeader, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: adgroup.DeleteAdgroupRequest{

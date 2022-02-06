@@ -2,9 +2,11 @@ package app
 
 import (
 	"fmt"
+
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetJsKpAppListRequest 查询APP信息 API Request
 type GetJsKpAppListRequest struct {
 }
 

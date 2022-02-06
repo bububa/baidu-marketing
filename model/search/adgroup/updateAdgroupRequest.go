@@ -6,8 +6,10 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// UpdateAdgroupRequest 更新推广单元 API Request
 type UpdateAdgroupRequest struct {
-	AdgroupTypes []Adgroup `json:"adgroupTypes,omitempty"` // 更新推广单元字段;集合长度限制：[1, 5000]
+	// AdgroupTypes 更新推广单元字段;集合长度限制：[1, 5000]
+	AdgroupTypes []Adgroup `json:"adgroupTypes,omitempty"`
 }
 
 func (r UpdateAdgroupRequest) Url() string {

@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetAccountTransferHistoryRequest 查询转账记录 API Request
 type GetAccountTransferHistoryRequest struct {
 	StartTime string `json:"startTime"`
 	EndTime   string `json:"endTime"`

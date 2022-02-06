@@ -6,8 +6,8 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/campaign"
 )
 
-// 删除计划
-func DeleteCampaign(clt *core.SDKClient, auth model.RequestHeader, campaignIds []int64) error {
+// DeleteCampaign 删除计划
+func DeleteCampaign(clt *core.SDKClient, auth model.RequestHeader, campaignIds []int64) (*model.ResponseHeader, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: campaign.DeleteCampaignRequest{

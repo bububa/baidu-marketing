@@ -1,6 +1,6 @@
 package report
 
-// 实时报告请求-包含多类报告
+// ReportRequest 实时报告请求-包含多类报告
 // LevelOfDetails 类型
 // 2：账户粒度
 // 3：计划粒度
@@ -84,20 +84,35 @@ package report
 // 3：闪投报告
 // 7：原生RTA
 type ReportRequest struct {
-	PerformanceData []string `json:"performanceData,omitempty"` // 必填 取值范围：cost（花费）、cpc（平均点击价格）、impression（展现）、click（点击）、ctr（点击率）、cpm（千次展现成本）、position（上方位平均排名）、conversion（网页转化）、商桥转化（bridgeConversion） 其中（impression,click必填） .另由于转化字段较多，取值可参考转化字段表。针对不同的物料层级，其合法的取值范围不同，（按照第一个请求的字段排序）请参见报告规则
-	IdOnly          *bool    `json:"idOnly,omitempty"`          // 是否只需要id
-	StartDate       string   `json:"startDate,omitempty"`       // 统计开始时间，格式参考： 2010-08-01
-	EndDate         string   `json:"endDate,omitempty"`         // 统计结束时间，格式参考： 2010-08-17
-	LevelOfDetails  int      `json:"levelOfDetails,omitempty"`  // 指定返回的数据层级;
-	Format          int      `json:"format,omitempty"`          // 报告文件格式
-	ReportType      int      `json:"reportType,omitempty"`      // 实时数据类型;
-	StatIds         []int64  `json:"statIds,omitempty"`         // 统计范围下的id集合。根据StatRange的不同类型填写不同id;选填，默认NULL，表示统计范围为全账户;staRange为3时填写计划id;staRange为5时填写单元id;staRange为7时填写创意id
-	StatRange       int      `json:"statRange,omitempty"`       // 统计范围;
-	UnitOfTime      int      `json:"unitOfTime,omitempty"`      // 统计时间单位;
-	Producttype     int      `json:"producttype,omitempty"`     // 版位; 0-全部; 1-列表页; 2-详情页
-	Subject         int      `json:"subject,omitempty"`         // 推广对象
-	BidType         []string `json:"bidType,omitempty"`         // 出价模式
-	PayMode         []string `json:"payMode,omitempty"`         // 付费模式
-	MaterialStyle   int      `json:"materialStyle,omitempty"`   // 样式类型
-	Bstype          int      `json:"bstype,omitempty"`          // bstype;
+	// PerformanceData 必填 取值范围：cost（花费）、cpc（平均点击价格）、impression（展现）、click（点击）、ctr（点击率）、cpm（千次展现成本）、position（上方位平均排名）、conversion（网页转化）、商桥转化（bridgeConversion） 其中（impression,click必填） .另由于转化字段较多，取值可参考转化字段表。针对不同的物料层级，其合法的取值范围不同，（按照第一个请求的字段排序）请参见报告规则
+	PerformanceData []string `json:"performanceData,omitempty"`
+	// IdOnly 是否只需要id
+	IdOnly *bool `json:"idOnly,omitempty"`
+	// StartDate 统计开始时间，格式参考： 2010-08-01
+	StartDate string `json:"startDate,omitempty"`
+	// EndDate 统计结束时间，格式参考： 2010-08-17
+	EndDate string `json:"endDate,omitempty"`
+	// LevelOfDetails 指定返回的数据层级;
+	LevelOfDetails int `json:"levelOfDetails,omitempty"`
+	// Format 报告文件格式
+	Format int `json:"format,omitempty"`
+	// ReportType 实时数据类型;
+	ReportType int `json:"reportType,omitempty"`
+	// StatIds 统计范围下的id集合。根据StatRange的不同类型填写不同id;选填，默认NULL，表示统计范围为全账户;staRange为3时填写计划id;staRange为5时填写单元id;staRange为7时填写创意id
+	StatIds []int64 `json:"statIds,omitempty"`
+	// StatRange 统计范围;
+	StatRange int `json:"statRange,omitempty"`
+	// UnitOfTime 统计时间单位;
+	UnitOfTime int `json:"unitOfTime,omitempty"`
+	// Producttype 版位; 0-全部; 1-列表页; 2-详情页
+	Producttype int `json:"producttype,omitempty"`
+	// Subject 推广对象
+	Subject int `json:"subject,omitempty"`
+	// BidType 出价模式
+	BidType []string `json:"bidType,omitempty"`
+	// PayMode 付费模式
+	PayMode []string `json:"payMode,omitempty"`
+	// MaterialStyle 样式类型
+	MaterialStyle int `json:"materialStyle,omitempty"`
+	Bstype        int `json:"bstype,omitempty"` // Bstype bstype;
 }

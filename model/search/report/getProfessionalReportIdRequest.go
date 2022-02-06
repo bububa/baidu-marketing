@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetProfessionalReportIdRequest 创建异步报告（获取异步报告id） API Request
 type GetProfessionalReportIdRequest struct {
 	ReportRequestType *ReportRequest `json:"reportRequestType,omitempty"`
 }

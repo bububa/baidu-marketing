@@ -2,6 +2,7 @@ package dpa
 
 import "github.com/bububa/baidu-marketing/model/feed/adgroup"
 
+// Adgroup 推广单元
 type Adgroup struct {
 	// AdgroupId 推广单元ID，定义同原生
 	AdgroupId int64 `json:"adgroupFeedId,omitempty"`

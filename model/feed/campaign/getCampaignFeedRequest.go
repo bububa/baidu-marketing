@@ -25,9 +25,12 @@ addtime - 添加时间
 shadow - 计划影子的APP信息
 */
 type GetCampaignFeedRequest struct {
-	CampaignFeedFields []string            `json:"campaignFeedFields,omitempty"` // 需要查询的计划属性
-	CampaignFeedIds    []int64             `json:"campaignFeedIds,omitempty"`    // 查询推广计划ID集合
-	CampaignFeedFilter *CampaignFeedFilter `json:"campaignFeedFilter,omitempty"` // 计划查询过滤条件
+	// CampaignFeedFields 需要查询的计划属性
+	CampaignFeedFields []string `json:"campaignFeedFields,omitempty"`
+	// CampaignFeedIds 查询推广计划ID集合
+	CampaignFeedIds []int64 `json:"campaignFeedIds,omitempty"`
+	// CampaignFeedFilter 计划查询过滤条件
+	CampaignFeedFilter *CampaignFeedFilter `json:"campaignFeedFilter,omitempty"`
 }
 
 func (r GetCampaignFeedRequest) Url() string {

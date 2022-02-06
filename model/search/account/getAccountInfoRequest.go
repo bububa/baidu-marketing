@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetAccountInfoRequest 查询账户 API Request
 // userId - 账户ID
 // balance - 账户余额
 // pcBalance - 框架-基准资金包余额
@@ -22,7 +23,8 @@ import (
 // userLevel - 客户权益-账户等级
 // regionPriceFactor - 分地域出价系数
 type GetAccountInfoRequest struct {
-	AccountFields []string `json:"accountFields,omitempty"` // 指定需要返回的属性;
+	// AccountFields 指定需要返回的属性;
+	AccountFields []string `json:"accountFields,omitempty"`
 }
 
 func (r GetAccountInfoRequest) Url() string {

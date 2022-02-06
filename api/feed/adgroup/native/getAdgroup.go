@@ -6,16 +6,13 @@ import (
 	"github.com/bububa/baidu-marketing/model/feed/adgroup/native"
 )
 
-// 查询原生推广单元
-func GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.GetAdgroupFeedRequest) ([]native.Adgroup, error) {
+// GetAdgroup 查询原生推广单元
+func GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.GetAdgroupFeedRequest) (*model.ResponseHeader, []native.Adgroup, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,
 	}
 	var resp native.GetAdgroupFeedResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

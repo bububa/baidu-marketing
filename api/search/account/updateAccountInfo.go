@@ -6,9 +6,9 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/account"
 )
 
-// 更新账户
+// UpdateAccountInfo 更新账户
 // 更新username对应的账户信息，如果是来自MCC Token的请求，则更新target对应的账户信息。
-func UpdateAccountInfo(clt *core.SDKClient, auth model.RequestHeader, accountInfo *account.Account) ([]account.Account, error) {
+func UpdateAccountInfo(clt *core.SDKClient, auth model.RequestHeader, accountInfo *account.Account) (*model.ResponseHeader, []account.Account, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: account.UpdateAccountInfoRequest{
@@ -16,9 +16,6 @@ func UpdateAccountInfo(clt *core.SDKClient, auth model.RequestHeader, accountInf
 		},
 	}
 	var resp account.UpdateAccountInfoResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

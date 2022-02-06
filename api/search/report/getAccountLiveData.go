@@ -6,9 +6,9 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/report"
 )
 
-// 账户实时数据
+// GetAccountLiveData 账户实时数据
 // 通过此接口获取账户和计划当天累计数据信息。
-func GetAccountLiveData(clt *core.SDKClient, auth model.RequestHeader, dataType int, device int) ([]report.AccountLiveData, error) {
+func GetAccountLiveData(clt *core.SDKClient, auth model.RequestHeader, dataType int, device int) (*model.ResponseHeader, []report.AccountLiveData, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: report.GetAccountLiveDataRequest{
@@ -17,9 +17,6 @@ func GetAccountLiveData(clt *core.SDKClient, auth model.RequestHeader, dataType 
 		},
 	}
 	var resp report.GetAccountLiveDataResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

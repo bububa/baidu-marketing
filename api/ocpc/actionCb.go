@@ -7,7 +7,7 @@ import (
 	"github.com/bububa/baidu-marketing/model/ocpc"
 )
 
-// APP转化数据收集
+// ActionCb APP转化数据收集
 func ActionCb(req *ocpc.ActionCbRequest) error {
 	httpReq, err := http.NewRequest("GET", req.Url(), nil)
 	if err != nil {

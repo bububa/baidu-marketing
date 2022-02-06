@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// ActionCbRequest 转化追踪回调 请求
 type ActionCbRequest struct {
 	Akey        string `json:"akey,omitempty"`
 	CallbackUrl string `json:"callbackUrl,omitempty"`
@@ -15,8 +16,8 @@ type ActionCbRequest struct {
 }
 
 func (r ActionCbRequest) unsignedUrl() string {
-	link := strings.Replace(r.CallbackUrl, "{{ATYPE}}", r.AType, -1)
-	link = strings.Replace(link, "{{AVALUE}}", r.AValue, -1)
+	link := strings.ReplaceAll(r.CallbackUrl, "{{ATYPE}}", r.AType)
+	link = strings.ReplaceAll(link, "{{AVALUE}}", r.AValue)
 	return link
 }
 
@@ -31,6 +32,7 @@ func (r ActionCbRequest) Url() string {
 	return fmt.Sprintf("%s&sign=%s", r.unsignedUrl(), r.Sign())
 }
 
+// ActionCbResponse 转化追踪回调返回
 type ActionCbResponse struct {
 	ErrorCode int    `json:"error_code,omitempty"`
 	ErrorMsg  string `json:"error_msg,omitempty"`

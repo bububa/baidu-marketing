@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetAdgroupFeedRequest 查询推广单元 API Request
 type GetAdgroupFeedRequest struct {
 	AdgroupFeedFields []string `json:"adgroupFeedFields,omitempty"` // 待查询的单元属性
 	Ids               []int64  `json:"ids"`                         // 待查询计划/单元ID集合

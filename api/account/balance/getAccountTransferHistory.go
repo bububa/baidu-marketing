@@ -8,9 +8,9 @@ import (
 	"github.com/bububa/baidu-marketing/model/account/balance"
 )
 
-// 查询转账记录
+// GetAccountTransferHistory 查询转账记录
 // 查询MCC账户历史转账记录，仅适用于KA账户
-func GetAccountTransferHistory(clt *core.SDKClient, auth model.RequestHeader, startTime time.Time, endTime time.Time) ([]balance.AccountTransferHistory, error) {
+func GetAccountTransferHistory(clt *core.SDKClient, auth model.RequestHeader, startTime time.Time, endTime time.Time) (*model.ResponseHeader, []balance.AccountTransferHistory, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: balance.GetAccountTransferHistoryRequest{
@@ -19,9 +19,6 @@ func GetAccountTransferHistory(clt *core.SDKClient, auth model.RequestHeader, st
 		},
 	}
 	var resp balance.GetAccountTransferHistoryResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

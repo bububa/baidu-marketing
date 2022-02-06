@@ -6,7 +6,9 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// DeleteCreativeRequest 删除推广创意 API Request
 type DeleteCreativeRequest struct {
+	// CreativeIds 创意ID
 	CreativeIds []int64 `json:"creativeIds"`
 }
 

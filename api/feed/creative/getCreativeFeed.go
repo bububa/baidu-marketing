@@ -6,15 +6,13 @@ import (
 	"github.com/bububa/baidu-marketing/model/feed/creative"
 )
 
-func GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) ([]creative.Creative, error) {
+// GetCreativeFeed 查询创意
+func GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,
 	}
 	var resp creative.GetCreativeResponse
-	err := clt.DoAny(req, &resp)
-	if err != nil {
-		return resp.Data, err //这里如果传入Ids为混杂的,会一部分正确一部分错误
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

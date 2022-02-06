@@ -6,8 +6,10 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// UpdateAccountInfoRequest 更新账户 API Request
 type UpdateAccountInfoRequest struct {
-	AccountInfo *Account `json:"accountInfo,omitempty"` // 更新账户信息
+	// AccountInfo 更新账户信息
+	AccountInfo *Account `json:"accountInfo,omitempty"`
 }
 
 func (r UpdateAccountInfoRequest) Url() string {

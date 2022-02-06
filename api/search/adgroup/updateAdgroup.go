@@ -6,9 +6,9 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/adgroup"
 )
 
-// 更新单元
+// UpdateAdgroup 更新单元
 // 更新推广单元
-func UpdateAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroups []adgroup.Adgroup) ([]adgroup.Adgroup, error) {
+func UpdateAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroups []adgroup.Adgroup) (*model.ResponseHeader, []adgroup.Adgroup, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: adgroup.UpdateAdgroupRequest{
@@ -16,9 +16,6 @@ func UpdateAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroups []adg
 		},
 	}
 	var resp adgroup.UpdateAdgroupResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

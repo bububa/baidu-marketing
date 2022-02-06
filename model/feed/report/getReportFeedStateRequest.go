@@ -6,7 +6,9 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetReportFeedStateRequest 获取异步报告状态 API Request
 type GetReportFeedStateRequest struct {
+	// ReportId 报告ID
 	ReportId string `json:"reportId,omitempty"`
 }
 

@@ -48,7 +48,7 @@ func (c *SDKClient) SetDebug(debug bool) {
 }
 
 // Do execute api request
-func (c *SDKClient) Do(req *model.Request, resp interface{}) error {
+func (c *SDKClient) Do(req *model.Request, resp interface{}) (*model.ResponseHeader, error) {
 	if req.Header.Token == "" {
 		req.Header.Token = c.token
 	}
@@ -64,49 +64,24 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) error {
 	var reqResp model.Response
 	err := c.Post(req.Url(), reqBytes, &reqResp)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if reqResp.IsError() {
-		return reqResp
+		if reqResp.Header.Status == 1 && resp != nil {
+			err = json.Unmarshal(reqResp.Body, resp)
+			if err != nil {
+				return &reqResp.Header, err
+			}
+		}
+		return &reqResp.Header, reqResp
 	}
 	if resp != nil {
 		err = json.Unmarshal(reqResp.Body, resp)
 		if err != nil {
-			return err
+			return &reqResp.Header, err
 		}
 	}
-	return nil
-}
-
-func (c *SDKClient) DoAny(req *model.Request, resp interface{}) error {
-	if req.Header.Token == "" {
-		req.Header.Token = c.token
-	}
-	if req.Header.AccessToken == "" {
-		if req.Header.Username == "" {
-			req.Header.Username = c.username
-		}
-		if req.Header.Password == "" {
-			req.Header.Password = c.password
-		}
-	}
-	reqBytes, _ := json.Marshal(req)
-	var reqResp model.Response
-	err := c.Post(req.Url(), reqBytes, &reqResp)
-	if err != nil {
-		return err
-	}
-	if resp != nil {
-		err = json.Unmarshal(reqResp.Body, resp)
-		if err != nil {
-			return err
-		}
-	}
-	if reqResp.IsError() {
-		return reqResp
-	}
-
-	return nil
+	return &reqResp.Header, nil
 }
 
 // Post data through api

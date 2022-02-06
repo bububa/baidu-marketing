@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// Response 转化回传返回结果
 type Response struct {
 	Header ResponseHeader `json:"header"`
 }
@@ -19,8 +20,9 @@ func (r Response) Error() string {
 	return string(buf)
 }
 
+// ResponseHeader .
 type ResponseHeader struct {
 	Desc   string                  `json:"desc,omitempty"`
 	Status int                     `json:"status,omitempty"` // 状态码
-	Errors []model.ResponseFailure `json:"errors,omiempty"`
+	Errors []model.ResponseFailure `json:"errors,omitempty"`
 }

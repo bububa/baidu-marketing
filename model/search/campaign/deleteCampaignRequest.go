@@ -6,7 +6,9 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// DeleteCampaignRequest 删除计划 API Request
 type DeleteCampaignRequest struct {
+	// CampaignIds 计划ID
 	CampaignIds []int64 `json:"campaignIds,omitempty"`
 }
 

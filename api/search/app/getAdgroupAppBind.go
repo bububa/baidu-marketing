@@ -6,15 +6,13 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/app"
 )
 
-func GetAdgroupAppBind(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.GetAdgroupAppBindRequest) ([]app.InfoAppItem, error) {
+// GetAdgroupAppBind 查询APP绑定
+func GetAdgroupAppBind(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.GetAdgroupAppBindRequest) (*model.ResponseHeader, []app.AppBindItem, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,
 	}
 	var resp app.GetAdgroupAppBindResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetCreativeRequest 查询推广创意 API Request
 // 查询推广创意字段
 // creativeId - 创意ID
 // adgroupId - 推广单元ID
@@ -22,12 +23,15 @@ import (
 // miniProgramUrl - 小程序访问网址
 // offlineReasons - 推广下线原因
 // deeplink - 应用调起网址
-
 type GetCreativeRequest struct {
-	Ids            []int64  `json:"ids"`               // 查询id集合;类型为单元ID时不超过1000个，类型为创意ID时不超过3000个，建议分批多次请求
-	CreativeFields []string `json:"creativeFields"`    // 查询推广创意字段
-	IdType         int      `json:"idType"`            // 查询id类型;5 - 单元ID;7 - 创意ID
-	GetTemp        int      `json:"getTemp,omitempty"` // 是否获取创意影子;0 - 只查询创意本身;1 - 只查询创意影子;影子说明：用户先向系统提交了创意A，并且A已审核通过，之后再对A进行影响审核状态的修改（例如修改创意文案/url），修改后的创意为A’（A’即为影子，仅对审核通过的物料进行修改才会产生影子），在A’通过审核生效之前，线上的生效创意仍然为A。;此时：getTemp为0查询到的是A getTemp为1查询到的是A’
+	// Ids 查询id集合;类型为单元ID时不超过1000个，类型为创意ID时不超过3000个，建议分批多次请求
+	Ids []int64 `json:"ids"`
+	// CreativeFields 查询推广创意字段
+	CreativeFields []string `json:"creativeFields"`
+	// IdType 查询id类型;5 - 单元ID;7 - 创意ID
+	IdType int `json:"idType"`
+	// GetTemp 是否获取创意影子;0 - 只查询创意本身;1 - 只查询创意影子;影子说明：用户先向系统提交了创意A，并且A已审核通过，之后再对A进行影响审核状态的修改（例如修改创意文案/url），修改后的创意为A’（A’即为影子，仅对审核通过的物料进行修改才会产生影子），在A’通过审核生效之前，线上的生效创意仍然为A。;此时：getTemp为0查询到的是A getTemp为1查询到的是A’
+	GetTemp int `json:"getTemp,omitempty"`
 }
 
 func (r GetCreativeRequest) Url() string {

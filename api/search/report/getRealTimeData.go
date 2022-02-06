@@ -6,8 +6,8 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/report"
 )
 
-// 推广报告
-func GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.RealTimeRequest) ([]report.RealTimeResult, error) {
+// GetRealTimeData 推广报告
+func GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.RealTimeRequest) (*model.ResponseHeader, []report.RealTimeResult, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: report.GetRealTimeDataRequest{
@@ -15,9 +15,6 @@ func GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequ
 		},
 	}
 	var resp report.GetRealTimeDataResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

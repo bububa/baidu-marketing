@@ -6,10 +6,14 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetVideoRequest 获取视频素材 API Request
 type GetVideoRequest struct {
-	Ids      []int `json:"ids,omitempty"` // 视频id集合，不填则不限定视频id。ids大小建议1000以内
-	Page     int   `json:"page"`          // 当前页
-	PageSize int   `json:"pageSize"`      // 当前页大小
+	// Ids 视频id集合，不填则不限定视频id。ids大小建议1000以内
+	Ids []int `json:"ids,omitempty"`
+	// Page 当前页
+	Page int `json:"page"`
+	// PageSize 当前页大小
+	PageSize int `json:"pageSize"`
 }
 
 func (r GetVideoRequest) Url() string {

@@ -1,5 +1,6 @@
 package video
 
+// Video 视频素材
 // Source 可选值
 // 1：视频平台
 // 2：信息流视频
@@ -25,23 +26,39 @@ package video
 // 0：转码成功，可绑定创意
 // 1：转码中，可绑定创意，但需等转码成功之后才会审核
 // 2：转码失败，不可绑定创意
-
 type Video struct {
-	Userid        int64  `json:"userid,omitempty"`        // 账户id
-	Videoid       int64  `json:"videoid,omitempty"`       // 视频id
-	Url           string `json:"url,omitempty"`           // 视频url
-	VideoName     string `json:"videoName,omitempty"`     // 视频名称
-	Source        int    `json:"source,omitempty"`        // 来源
-	Capacity      int    `json:"capacity,omitempty"`      // 视频大小
-	Format        string `json:"format,omitempty"`        // 视频格式
-	Width         int    `json:"width,omitempty"`         // 宽度
-	Height        int    `json:"height,omitempty"`        // 高度
-	Duration      int    `json:"duration,omitempty"`      // 时长，单位s
-	AddTime       int64  `json:"addTime,omitempty"`       // 添加时间，unix时间戳，单位毫秒
-	ModTime       int64  `json:"modTime,omitempty"`       // 修改时间，unix时间戳，单位毫秒
-	Thumbnail     string `json:"thumbnail,omitempty"`     // 封面图片url，为空代表该视频没有没有封面图，客户上传的视频肯定有
-	DeliverStatus int    `json:"deliverStatus,omitempty"` // 投放状态，0：投放中，表示有创意正在引用该视频 1：未投放
-	Istranscode   int    `json:"istranscode,omitempty"`   // 转码状态，0：转码成功，可绑定创意，1：转码中，可绑定创意，但需等转码成功之后才会审核，2：转码失败，不可绑定创意
-	FromUserId    int64  `json:"fromUserId,omitempty"`    // 由谁分享，非分享的视频不返回此字段
-	VideoMd5      string `json:"videoMd5,omitempty"`      // 视频文件md5
+	// Userid  账户id
+	Userid int64 `json:"userid,omitempty"`
+	// Videoid 视频id
+	Videoid int64 `json:"videoid,omitempty"`
+	// Url 视频url
+	Url string `json:"url,omitempty"`
+	// VideoName 视频名称
+	VideoName string `json:"videoName,omitempty"`
+	// Source 来源
+	Source int `json:"source,omitempty"`
+	// Capacity 视频大小
+	Capacity int `json:"capacity,omitempty"`
+	// Format 视频格式
+	Format string `json:"format,omitempty"`
+	// Width 宽度
+	Width int `json:"width,omitempty"`
+	// Height 高度
+	Height int `json:"height,omitempty"`
+	// Duration 时长，单位s
+	Duration int `json:"duration,omitempty"`
+	// AddTime 添加时间，unix时间戳，单位毫秒
+	AddTime int64 `json:"addTime,omitempty"`
+	// ModTime 修改时间，unix时间戳，单位毫秒
+	ModTime int64 `json:"modTime,omitempty"`
+	// Thumbnail 封面图片url，为空代表该视频没有没有封面图，客户上传的视频肯定有
+	Thumbnail string `json:"thumbnail,omitempty"`
+	// DeliverStatus 投放状态，0：投放中，表示有创意正在引用该视频 1：未投放
+	DeliverStatus int `json:"deliverStatus,omitempty"`
+	// Istranscode 转码状态，0：转码成功，可绑定创意，1：转码中，可绑定创意，但需等转码成功之后才会审核，2：转码失败，不可绑定创意
+	Istranscode int `json:"istranscode,omitempty"`
+	// FromUserId 由谁分享，非分享的视频不返回此字段
+	FromUserId int64 `json:"fromUserId,omitempty"`
+	// VideoMd5 视频文件md5
+	VideoMd5 string `json:"videoMd5,omitempty"`
 }

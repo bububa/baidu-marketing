@@ -6,8 +6,10 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// UpdateCreativeRequest 修改推广创意 API Request
 type UpdateCreativeRequest struct {
-	CreativeTypes []Creative `json:"creativeTypes,omitempty"` // 更新推广创意字段;集合长度限制：[1, 3000];建议分批多次请求
+	// CreativeTypes 更新推广创意字段;集合长度限制：[1, 3000];建议分批多次请求
+	CreativeTypes []Creative `json:"creativeTypes,omitempty"`
 }
 
 func (r UpdateCreativeRequest) Url() string {

@@ -6,8 +6,8 @@ import (
 	"github.com/bububa/baidu-marketing/model/feed/account"
 )
 
-// 查询账户
-func GetAccountFeed(clt *core.SDKClient, auth model.RequestHeader, accountFields []string) ([]account.Account, error) {
+// GetAccountFeed 查询账户
+func GetAccountFeed(clt *core.SDKClient, auth model.RequestHeader, accountFields []string) (*model.ResponseHeader, []account.Account, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: account.GetAccountFeedRequest{
@@ -15,9 +15,6 @@ func GetAccountFeed(clt *core.SDKClient, auth model.RequestHeader, accountFields
 		},
 	}
 	var resp account.GetAccountFeedResponse
-	err := clt.Do(req, &resp)
-	if err != nil {
-		return nil, err
-	}
-	return resp.Data, nil
+	header, err := clt.Do(req, &resp)
+	return header, resp.Data, err
 }

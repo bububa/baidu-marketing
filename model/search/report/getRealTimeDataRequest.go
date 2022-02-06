@@ -6,6 +6,7 @@ import (
 	"github.com/bububa/baidu-marketing/model"
 )
 
+// GetRealTimeDataRequest 推广报告 API Request
 type GetRealTimeDataRequest struct {
 	RealTimeRequestType *RealTimeRequest `json:"realTimeRequestType"`
 }

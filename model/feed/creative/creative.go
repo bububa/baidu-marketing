@@ -20,21 +20,21 @@ type Creative struct {
 	// AdgroupFeedId 所属推广单元ID
 	AdgroupFeedId int `json:"adgroupFeedId,omitempty"`
 	// Materialstyle 创意样式ID
-	Materialstyle []int `json:"materialstyle,omitempty"`
+	Materialstyle int `json:"materialstyle,omitempty"`
 	// CreativeFeedName 创意名称
 	CreativeFeedName string `json:"creativeFeedName,omitempty"`
 	// Pause 是否暂停推广
 	Pause bool `json:"pause,omitempty"`
 	// Status 创意状态
-	Status []int `json:"status,omitempty"`
+	Status int `json:"status,omitempty"`
 	// Material 物料内容
 	Material string `json:"material,omitempty"`
 	// Refusereason 审核未通过的原因（审核拒绝理由）
 	Refusereason string `json:"refusereason,omitempty"`
 	// Playnum 视频创意的视频播放量
-	Playnum []int `json:"playnum,omitempty"`
+	Playnum int `json:"playnum,omitempty"`
 	// IdeaType 创意类型
-	IdeaType []int `json:"ideaType,omitempty"`
+	IdeaType int `json:"ideaType,omitempty"`
 	// Addtime 创意的创建时间，仅获取创意列表时传递有效
 	Addtime string `json:"addtime,omitempty"`
 	// Approvemsgnew JSON格式化后的审核未通过的原因（审核拒绝理由）

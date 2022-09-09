@@ -12,6 +12,10 @@ type RequestHeader struct {
 	Target string `json:"target,omitempty"`
 	// AccessToken 百度商业服务市场服务商的access_token。注意属性名是大写的T
 	AccessToken string `json:"access_token,omitempty"`
+
+	//新的用户token请求方式
+	TargetUserNameV2 string `json:"userName,omitempty"`
+	AccessTokenV2    string `json:"accessToken,omitempty"`
 }
 
 // RequestBody 请求业务数据

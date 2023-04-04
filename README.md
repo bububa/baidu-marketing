@@ -43,6 +43,7 @@
   - 单元
     - 原生推广单元 (api/feed/adgroup/native)
       - 查询原生推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.GetAdgroupFeedRequest) ([]native.Adgroup, error) ]
+      - 更新单元 [ UpdateAdgroup(clt \*core.SDKClient, auth model.RequestHeader, adgroups []native.Adgroup) (*model.ResponseHeader, []native.Adgroup, error) ]
     - 商品推广单元 (api/feed/adgroup/dpa)
       - 查询商品推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *dpa.GetAdgroupFeedRequest) ([]dpa.Adgroup, error) ]
 - 搜索报告 (api/search/report)
@@ -66,3 +67,7 @@
   - 广告主回传转化数据接口 [ UploadConvertData(clt *core.SDKClient, req *ocpc.UploadConvertDataRequest) error ]
   - 广告主回传无效转化数据接口 [ UploadInvalidConvertData(clt *core.SDKClient, req *ocpc.UploadInvalidConvertDataRequest) error ]
   - APP 转化数据收集 [ ActionCb(req *ocpc.ActionCbRequest) error ]
+- 数据报告（api/report）
+  - 信息流报告
+    - 推广报告
+      - 单元报告 [ GetAdgroupReportData(clt *core.SDKClient, auth model.RequestHeader, reportRequest report.GetReportDataRequest) (*model.ResponseHeader, []report.GetAdgroupReportData, error) ]

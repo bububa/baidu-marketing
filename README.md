@@ -49,7 +49,7 @@
       - 添加单元 [ AddAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.AddAdgroupRequest) ([]native.Adgroup, error) ]
       - 更新单元 [ UpdateAdgroup(clt \*core.SDKClient, auth model.RequestHeader, adgroups []native.Adgroup) (*model.ResponseHeader, []native.Adgroup, error) ]
       - 删除单元 [ DeleteAdgroup(clt \*core.SDKClient, auth model.RequestHeader, adgroupFeedIds []int64) error ]
-  - 商品推广单元 (api/feed/adgroup/dpa)
+    - 商品推广单元 (api/feed/adgroup/dpa)
       - 查询商品推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *dpa.GetAdgroupFeedRequest) ([]dpa.Adgroup, error) ]
   - 创意 (api/feed/creative)
     - 查询创意 [ GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]

@@ -41,6 +41,10 @@ type Campaign struct {
 	Status int `json:"status,omitempty"`
 	// BsType 1：普通计划 3：闪投计划 7：原生RTA 注：不支持修改
 	BsType int `json:"bstype,omitempty"`
+	// CampaignType 信息流计划类型。1： 普通模式 4：放量模式
+	CampaignType int `json:"campaignType,omitempty"`
+	// EshopType 交易所在平台。取值范围：枚举值，列表如下 3-1 淘宝（含天猫） 3-2 京东 3-3 拼多多 3-4 苏宁 仅推广对象为电商店铺时需传该字段
+	EshopType string `json:"eshopType,omitempty"`
 	// AddTime 添加时间
 	AddTime string `json:"addtime,omitempty"`
 }

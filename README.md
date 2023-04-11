@@ -40,6 +40,9 @@
     - 更新账户 [ UpdateAccountFeed(clt \*core.SDKClient, auth model.RequestHeader, budget float64) ([]account.Account, error) ]
   - 计划 (api/feed/campaign)
     - 查询计划 [ GetCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignFeedRequest) ([]campaign.Campaign, error) ]
+    - 添加计划 [ AddCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.AddCampaignRequest) ([]campaign.Campaign, error) ]
+    - 更新计划 [ UpdateCampaign(clt \*core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) ([]campaign.Campaign, error) ]
+    - 删除计划 [ DeleteCampaign(clt \*core.SDKClient, auth model.RequestHeader, campaignIds []int64) error ]
   - 单元
     - 原生推广单元 (api/feed/adgroup/native)
       - 查询原生推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.GetAdgroupFeedRequest) ([]native.Adgroup, error) ]

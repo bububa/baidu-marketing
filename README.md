@@ -40,12 +40,22 @@
     - 更新账户 [ UpdateAccountFeed(clt \*core.SDKClient, auth model.RequestHeader, budget float64) ([]account.Account, error) ]
   - 计划 (api/feed/campaign)
     - 查询计划 [ GetCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignFeedRequest) ([]campaign.Campaign, error) ]
+    - 添加计划 [ AddCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.AddCampaignRequest) ([]campaign.Campaign, error) ]
+    - 更新计划 [ UpdateCampaign(clt \*core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) ([]campaign.Campaign, error) ]
+    - 删除计划 [ DeleteCampaign(clt \*core.SDKClient, auth model.RequestHeader, campaignIds []int64) error ]
   - 单元
     - 原生推广单元 (api/feed/adgroup/native)
       - 查询原生推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.GetAdgroupFeedRequest) ([]native.Adgroup, error) ]
+      - 添加单元 [ AddAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *native.AddAdgroupRequest) ([]native.Adgroup, error) ]
       - 更新单元 [ UpdateAdgroup(clt \*core.SDKClient, auth model.RequestHeader, adgroups []native.Adgroup) (*model.ResponseHeader, []native.Adgroup, error) ]
+      - 删除单元 [ DeleteAdgroup(clt \*core.SDKClient, auth model.RequestHeader, adgroupFeedIds []int64) error ]
     - 商品推广单元 (api/feed/adgroup/dpa)
       - 查询商品推广单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *dpa.GetAdgroupFeedRequest) ([]dpa.Adgroup, error) ]
+  - 创意 (api/feed/creative)
+    - 查询创意 [ GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
+    - 添加创意 [ AddCreative(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.AddCreativeRequest) ([]creative.Creative, error) ]
+    - 更新创意 [ UpdateCreative(clt \*core.SDKClient, auth model.RequestHeader, creatives []creative.Creative) ([]creative.Creative, error) ]
+    - 删除创意 [ DeleteCreative(clt \*core.SDKClient, auth model.RequestHeader, creativeFeedIds []int64) error ]
 - 搜索报告 (api/search/report)
   - 推广报告 [ GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.ReqlTimeRequest) ([]report.RealTimeResult, error) ]
   - 账户实时数据 [ GetAccountLiveData(clt \*core.SDKClient, auth model.RequestHeader, dataType int, device int) ([]report.AccountLiveData, error) ]

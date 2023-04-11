@@ -2,7 +2,6 @@ package native
 
 import (
 	"fmt"
-
 	"github.com/bububa/baidu-marketing/model"
 )
 

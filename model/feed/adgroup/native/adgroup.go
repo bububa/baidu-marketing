@@ -1,6 +1,9 @@
 package native
 
-import "github.com/bububa/baidu-marketing/model/feed/adgroup"
+import (
+	"github.com/bububa/baidu-marketing/enum"
+	"github.com/bububa/baidu-marketing/model/feed/adgroup"
+)
 
 // Adgroup 推广单元
 type Adgroup struct {
@@ -28,6 +31,29 @@ type Adgroup struct {
 	Ocpc *adgroup.Ocpc `json:"ocpc,omitempty"`
 	// AtpFeedId 定向包ID; 定向包的优先级高于audience字段设置的定向信息。已绑定定向包单元解除绑定需传0
 	AtpFeedId int64 `json:"atpFeedId,omitempty"`
+	// DeliveryType 投放场景；默认值：0 取值范围：枚举值，列表如下 0 - 不限 1 - 开屏 ；开屏选项仅在投放范围选择百青藤时有效
+	DeliveryType []int `json:"deliveryType,omitempty"`
+	// ProductSetId 商品组id；仅商品目录营销目标单元可用，新增时与unitProducts至少填写一个，与unitProducts同时使用时unitProducts优先生效。参照商品组管理。
+	ProductSetId int64 `json:"productSetId,omitempty"`
 	// AddTime 添加时间
 	AddTime string `json:"addTime,omitempty"`
+	// UnitProducts 单元商品筛选设置；仅商品目录营销目标单元可用，新增时与productSetId至少填写一个，与productSetId同时使用时unitProducts优先生效
+	UnitProducts []UnitProducts `json:"unitProducts,omitempty"`
+}
+
+type UnitProducts struct {
+	// CatalogId 商品目录id；商品目录管理请登录百度商品中心
+	CatalogId int64 `json:"catalogId,omitempty"`
+	// RuleProducts 商品组规则
+	RuleProducts []ProductSetRule `json:"ruleProducts,omitempty"`
+}
+
+// ProductSetRule 商品组规则
+type ProductSetRule struct {
+	// Field 字段名；参照查询商品库字段返回的字段value
+	Field string `json:"field,omitempty"`
+	// Operator 操作符。
+	Operator enum.Operator `json:"operator,omitempty"`
+	// Values 操作值。 操作字段值，多个操作值使用'|'分隔，多个之间取并集，最多15个值
+	Values []string `json:"values,omitempty"`
 }

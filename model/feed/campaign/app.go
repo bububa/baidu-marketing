@@ -14,4 +14,6 @@ type App struct {
 	ChannelId int64 `json:"channelId,omitempty"`
 	// OpenUrl 应用商店直投链接，选填，须以market://details?或apps://ProductDetail/开头；或者"0"表示关闭,“1”表示开启. 更新时不填表示清除已有链接
 	OpenUrl string `json:"openUrl,omitempty"`
+	// DownloadType 下载方式。0: 直接下载 1：落地页下载
+	DownloadType int `json:"downloadType,omitempty"`
 }

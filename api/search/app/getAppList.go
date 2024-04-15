@@ -7,7 +7,7 @@ import (
 )
 
 // GetAppList 获取APP素材
-func GetAppList(clt *core.SDKClient, auth model.RequestHeader, reqBody *app.GetAppListRequest) (*model.ResponseHeader, []app.AppInfoItemList, error) {
+func GetAppList(clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.GetAppListRequest) (*model.ResponseHeader, []app.AppInfoItemList, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

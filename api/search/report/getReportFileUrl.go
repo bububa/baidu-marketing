@@ -8,10 +8,10 @@ import (
 
 // GetReportFileUrl 获取异步报告文件URL
 // 获取报告下载地址。当报告成功生成后，使用reportId请求，返回相应的报告下载地址。
-func GetReportFileUrl(clt *core.SDKClient, auth model.RequestHeader, reportId string) (*model.ResponseHeader, string, error) {
+func GetReportFileUrl(clt *core.SDKClient, auth *model.RequestHeader, reportId string) (*model.ResponseHeader, string, error) {
 	req := &model.Request{
 		Header: auth,
-		Body: report.GetReportFileUrlRequest{
+		Body: &report.GetReportFileUrlRequest{
 			ReportId: reportId,
 		},
 	}

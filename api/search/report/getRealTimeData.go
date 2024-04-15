@@ -7,7 +7,7 @@ import (
 )
 
 // GetRealTimeData 推广报告
-func GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.RealTimeRequest) (*model.ResponseHeader, []report.RealTimeResult, error) {
+func GetRealTimeData(clt *core.SDKClient, auth *model.RequestHeader, realTimeRequest *report.RealTimeRequest) (*model.ResponseHeader, []report.RealTimeResult, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: report.GetRealTimeDataRequest{

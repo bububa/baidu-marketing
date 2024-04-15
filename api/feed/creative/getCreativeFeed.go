@@ -7,7 +7,7 @@ import (
 )
 
 // GetCreativeFeed 查询创意
-func GetCreativeFeed(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) {
+func GetCreativeFeed(clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

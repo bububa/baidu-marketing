@@ -7,13 +7,18 @@ import (
 )
 
 // DeleteCampaign 删除计划
-func DeleteCampaign(clt *core.SDKClient, auth model.RequestHeader, campaignIds []int64) (*model.ResponseHeader, error) {
+func DeleteCampaign(clt *core.SDKClient, auth *model.RequestHeader, campaignIds ...uint64) (*model.ResponseHeader, []campaign.Campaign, error) {
 	req := &model.Request{
 		Header: auth,
-		Body: campaign.DeleteCampaignRequest{
+		Body: &campaign.DeleteCampaignRequest{
 			CampaignIds: campaignIds,
 		},
 	}
 
-	return clt.Do(req, nil)
+	var ret campaign.DeleteCampaignResponse
+	headers, err := clt.Do(req, &ret)
+	if err != nil {
+		return nil, nil, err
+	}
+	return headers, ret.Data, nil
 }

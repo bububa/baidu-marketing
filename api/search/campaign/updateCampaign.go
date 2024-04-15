@@ -8,7 +8,7 @@ import (
 
 // UpdateCampaign 更新计划
 // 根据指定的计划ID更新推广计划的属性
-func UpdateCampaign(clt *core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) {
+func UpdateCampaign(clt *core.SDKClient, auth *model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: campaign.UpdateCampaignRequest{

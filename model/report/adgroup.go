@@ -1,7 +1,7 @@
 package report
 
 type AdgroupReport struct {
-	*AdStats
+	*Metric
 	Date               string `json:"date"`                         // 日期
 	UserName           string `json:"userName,omitempty"`           // 账户
 	CampaignNameStatus string `json:"campaignNameStatus,omitempty"` // 推广计划

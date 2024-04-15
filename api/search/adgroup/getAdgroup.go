@@ -8,7 +8,7 @@ import (
 
 // GetAdgroup 查询单元
 // 查询推广单元
-func GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *adgroup.GetAdgroupRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) {
+func GetAdgroup(clt *core.SDKClient, auth *model.RequestHeader, reqBody *adgroup.GetAdgroupRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

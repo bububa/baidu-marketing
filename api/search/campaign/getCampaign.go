@@ -8,7 +8,7 @@ import (
 
 // GetCampaign 查询计划
 // 根据指定的计划ID获取推广计划(ID可批量)
-func GetCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignRequest) (*model.ResponseHeader, []campaign.Campaign, error) {
+func GetCampaign(clt *core.SDKClient, auth *model.RequestHeader, reqBody *campaign.GetCampaignRequest) (*model.ResponseHeader, []campaign.Campaign, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

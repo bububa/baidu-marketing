@@ -26,7 +26,7 @@ type RequestBody interface {
 // Request API 请求对象
 type Request struct {
 	// Header header 对象
-	Header RequestHeader `json:"header"`
+	Header *RequestHeader `json:"header"`
 	// Body 业务对象
 	Body RequestBody `json:"body"`
 }

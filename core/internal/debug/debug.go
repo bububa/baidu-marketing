@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"log"
+
+	"github.com/bububa/baidu-marketing/util"
 )
 
 func PrintError(err error, debug bool) {
@@ -36,25 +37,28 @@ func PrintPostJSONRequest(url string, body []byte, debug bool) {
 	const format = "[DEBUG] [API] JSON POST %s\n" +
 		"http request body:\n%s\n"
 
-	buf := bytes.NewBuffer(make([]byte, 0, len(body)+1024))
-	if err := json.Indent(buf, body, "", "    "); err == nil {
-		body = buf.Bytes()
-	}
+	buf := util.GetBufferPool()
+	defer util.PutBufferPool(buf)
+	json.Indent(buf, body, "", "\t")
 	log.Printf(format, url, body)
 }
 
-func PrintPostMultipartRequest(url string, body []byte, debug bool) {
+func PrintPostMultipartRequest(url string, mp map[string]string, debug bool) {
 	if !debug {
 		return
 	}
-	log.Println("[DEBUG] [API] multipart/form-data POST", url)
+	const format = "[DEBUG] [API] multipart/form-data POST %s\n" +
+		"http request body:\n%s\n"
+
+	bs, _ := json.MarshalIndent(mp, "", "\t")
+	log.Printf(format, url, bs)
 }
 
 func DecodeJSONHttpResponse(r io.Reader, v interface{}, debug bool) error {
 	if !debug {
 		return json.NewDecoder(r).Decode(v)
 	}
-	body, err := ioutil.ReadAll(r)
+	body, err := io.ReadAll(r)
 	if err != nil {
 		return err
 	}

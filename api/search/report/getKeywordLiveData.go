@@ -8,7 +8,7 @@ import (
 
 // GetKeywordLiveData 关键词实时数据
 // 通过此接口获取关键词实时数据报告信息。
-func GetKeywordLiveData(clt *core.SDKClient, auth model.RequestHeader, reqBody *report.GetKeywordLiveDataRequest) (*model.ResponseHeader, []report.KeywordLiveData, error) {
+func GetKeywordLiveData(clt *core.SDKClient, auth *model.RequestHeader, reqBody *report.GetKeywordLiveDataRequest) (*model.ResponseHeader, []report.KeywordLiveData, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

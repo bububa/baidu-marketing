@@ -8,7 +8,7 @@ import (
 
 // UpdateAdgroup 更新单元
 // 更新推广单元
-func UpdateAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroups []adgroup.Adgroup) (*model.ResponseHeader, []adgroup.Adgroup, error) {
+func UpdateAdgroup(clt *core.SDKClient, auth *model.RequestHeader, adgroups []adgroup.Adgroup) (*model.ResponseHeader, []adgroup.Adgroup, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: adgroup.UpdateAdgroupRequest{

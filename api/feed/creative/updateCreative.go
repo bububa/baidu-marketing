@@ -7,7 +7,7 @@ import (
 )
 
 // UpdateCreative 修改推广创意
-func UpdateCreative(clt *core.SDKClient, auth model.RequestHeader, creatives []creative.Creative) (*model.ResponseHeader, []creative.Creative, error) {
+func UpdateCreative(clt *core.SDKClient, auth *model.RequestHeader, creatives []creative.Creative) (*model.ResponseHeader, []creative.Creative, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: creative.UpdateCreativeRequest{

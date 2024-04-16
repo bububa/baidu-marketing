@@ -6,8 +6,8 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/creative"
 )
 
-// AddCreative 新增推广创意
-func AddCreative(clt *core.SDKClient, auth model.RequestHeader, reqBody *creative.AddCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) {
+// AddCreative 添加基础创意
+func AddCreative(clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.AddCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,

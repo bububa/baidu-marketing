@@ -6,13 +6,13 @@ import (
 	"github.com/bububa/baidu-marketing/model/feed/adgroup/trans"
 )
 
-// GetOcpcTrans 查询转化追踪
-func GetOcpcTrans(clt *core.SDKClient, auth model.RequestHeader, reqBody *trans.OcpcTransRequest) (*model.ResponseHeader, []trans.OcpcTrans, error) {
+// GetOcpcTransFeed 查询转化追踪
+func GetOcpcTransFeed(clt *core.SDKClient, auth *model.RequestHeader, reqBody *trans.GetOcpcTransFeedRequest) (*model.ResponseHeader, []trans.OcpcTransFeed, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,
 	}
-	var resp trans.OcpcTransResponse
+	var resp trans.GetOcpcTransFeedResponse
 	header, err := clt.Do(req, &resp)
 	return header, resp.Data, err
 }

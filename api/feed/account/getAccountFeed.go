@@ -7,10 +7,10 @@ import (
 )
 
 // GetAccountFeed 查询账户
-func GetAccountFeed(clt *core.SDKClient, auth model.RequestHeader, accountFields []string) (*model.ResponseHeader, []account.Account, error) {
+func GetAccountFeed(clt *core.SDKClient, auth *model.RequestHeader, accountFields []string) (*model.ResponseHeader, []account.Account, error) {
 	req := &model.Request{
 		Header: auth,
-		Body: account.GetAccountFeedRequest{
+		Body: &account.GetAccountFeedRequest{
 			AccountFeedFields: accountFields,
 		},
 	}

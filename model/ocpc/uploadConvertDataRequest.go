@@ -23,7 +23,7 @@ type ConversionType struct {
 	// ConvertTime unix时间戳（精确到秒）;转化类型为46时必填
 	ConvertTime int64 `json:"convertTime,omitempty"`
 	// ConvertValue 转化金额（单位分）
-	ConvertValue int `json:"convertValue,omitempty"`
+	ConvertValue int64 `json:"convertValue,omitempty"`
 	// Confidence 置信度，0-100数字
 	Confidence int `json:"confidence,omitempty"`
 }

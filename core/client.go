@@ -7,6 +7,7 @@ import (
 
 	"github.com/bububa/baidu-marketing/core/internal/debug"
 	"github.com/bububa/baidu-marketing/model"
+	"github.com/bububa/baidu-marketing/util"
 )
 
 // SDKClient  object
@@ -60,9 +61,13 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) (*model.ResponseHea
 			req.Header.Password = c.password
 		}
 	}
-	reqBytes, _ := json.Marshal(req)
+	buf := util.GetBufferPool()
+	defer util.PutBufferPool(buf)
+	if err := json.NewEncoder(buf).Encode(req); err != nil {
+		return nil, err
+	}
 	var reqResp model.Response
-	err := c.Post(req.Url(), reqBytes, &reqResp)
+	err := c.Post(req.Url(), buf.Bytes(), &reqResp)
 	if err != nil {
 		return nil, err
 	}
@@ -85,9 +90,9 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) (*model.ResponseHea
 }
 
 // Post data through api
-func (c *SDKClient) Post(reqUrl string, reqBytes []byte, resp interface{}) error {
-	debug.PrintPostJSONRequest(reqUrl, reqBytes, c.debug)
-	httpReq, err := http.NewRequest("POST", reqUrl, bytes.NewReader(reqBytes))
+func (c *SDKClient) Post(reqUrl string, bs []byte, resp interface{}) error {
+	debug.PrintPostJSONRequest(reqUrl, bs, c.debug)
+	httpReq, err := http.NewRequest("POST", reqUrl, bytes.NewReader(bs))
 	if err != nil {
 		return err
 	}

@@ -5,8 +5,8 @@ type TimeUnit string
 
 const (
 	TimeUnitHOUR    TimeUnit = "HOUR"
-	TimeUnitDAY              = "DAY"
-	TimeUnitWEEK             = "WEEK"
-	TimeUnitMONTH            = "MONTH"
-	TimeUnitSUMMARY          = "SUMMARY"
+	TimeUnitDAY     TimeUnit = "DAY"
+	TimeUnitWEEK    TimeUnit = "WEEK"
+	TimeUnitMONTH   TimeUnit = "MONTH"
+	TimeUnitSUMMARY TimeUnit = "SUMMARY"
 )

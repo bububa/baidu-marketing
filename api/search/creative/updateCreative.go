@@ -6,11 +6,11 @@ import (
 	"github.com/bububa/baidu-marketing/model/search/creative"
 )
 
-// UpdateCreative 修改推广创意
-func UpdateCreative(clt *core.SDKClient, auth model.RequestHeader, creatives []creative.Creative) (*model.ResponseHeader, []creative.Creative, error) {
+// UpdateCreative 更新基础创意
+func UpdateCreative(clt *core.SDKClient, auth *model.RequestHeader, creatives []creative.Creative) (*model.ResponseHeader, []creative.Creative, error) {
 	req := &model.Request{
 		Header: auth,
-		Body: creative.UpdateCreativeRequest{
+		Body: &creative.UpdateCreativeRequest{
 			CreativeTypes: creatives,
 		},
 	}

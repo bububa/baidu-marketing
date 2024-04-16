@@ -7,11 +7,13 @@ import (
 )
 
 // UpdateAccountFeed 更新账户信息
-func UpdateAccountFeed(clt *core.SDKClient, auth model.RequestHeader, budget float64) (*model.ResponseHeader, []account.Account, error) {
+func UpdateAccountFeed(clt *core.SDKClient, auth *model.RequestHeader, budget float64) (*model.ResponseHeader, []account.Account, error) {
 	req := &model.Request{
 		Header: auth,
-		Body: account.UpdateAccountFeedRequest{
-			Budget: budget,
+		Body: &account.UpdateAccountFeedRequest{
+			AccountFeedType: &account.Account{
+				Budget: budget,
+			},
 		},
 	}
 	var resp account.UpdateAccountFeedResponse

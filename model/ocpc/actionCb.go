@@ -3,8 +3,9 @@ package ocpc
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"fmt"
 	"strings"
+
+	"github.com/bububa/baidu-marketing/util"
 )
 
 // ActionCbRequest 转化追踪回调 请求
@@ -22,14 +23,14 @@ func (r ActionCbRequest) unsignedUrl() string {
 }
 
 func (r ActionCbRequest) Sign() string {
-	signUrl := fmt.Sprintf("%s%s", r.unsignedUrl(), r.Akey)
+	signUrl := util.StringsJoin(r.unsignedUrl(), r.Akey)
 	h := md5.New()
 	h.Write([]byte(signUrl))
 	return hex.EncodeToString(h.Sum(nil))
 }
 
 func (r ActionCbRequest) Url() string {
-	return fmt.Sprintf("%s&sign=%s", r.unsignedUrl(), r.Sign())
+	return util.StringsJoin(r.unsignedUrl(), "&sign=", r.Sign())
 }
 
 // ActionCbResponse 转化追踪回调返回

@@ -75,23 +75,39 @@
     - 删除创意 [ DeleteCreative(clt *core.SDKClient, auth *model.RequestHeader, creativeFeedIds ...uint64) (*model.ResponseHeader, []creative.Creative, error) ]
 - 数据报告 (api/report)
   - 一站式多渠道报告 [ GetReportData(clt *core.SDKClient, auth *model.RequestHeader, reportRequest report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-  - 搜索报告 (api/search/report)
+  - 搜索报告 (api/report/search)
     - 推广报告
+      - 搜索整体账户报告 [ Overall(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
       - 账户报告 [ Account(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
       - 计划报告 [ Campaign(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
       - 单元报告 [ Adgroup(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-
-  - 推广报告 [ GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.ReqlTimeRequest) ([]report.RealTimeResult, error) ]
-  - 账户实时数据 [ GetAccountLiveData(clt \*core.SDKClient, auth model.RequestHeader, dataType int, device int) ([]report.AccountLiveData, error) ]
-  - 关键词实时数据 [ GetKeywordLiveData(clt *core.SDKClient, auth model.RequestHeader, reqBody *report.GetKeywordLiveDataRequest) ([]report.KeywordLiveData, error) ]
-  - 创建异步报告，获取报告 ID(reportId) [ GetProfessionalReportId(clt *core.SDKClient, auth model.RequestHeader, reqBody *report.ReportRequest) (string, error) ]
-  - 获取异步报告状态 [ GetReportState(clt *core.SDKClient, auth model.RequestHeader, reportId string) (int, error) ]
-  - 获取异步报告文件 URL [ GetReportFileUrl(clt *core.SDKClient, auth model.RequestHeader, reportId string) (string, error) ]
-- 信息流报告 (api/feed/report)
-  - 推广报告 [ GetRealTimeData(clt *core.SDKClient, auth model.RequestHeader, realTimeRequest *report.ReqlTimeRequest) ([]report.RealTimeResult, error) ]
-  - 创建异步报告，获取报告 ID(reportId) [ GetReportFeedId(clt *core.SDKClient, auth model.RequestHeader, reqBody *report.ReportRequest) (string, error) ]
-  - 获取异步报告状态 [ GetReportFeedState(clt *core.SDKClient, auth model.RequestHeader, reportId string) (int, error) ]
-  - 获取异步报告文件 URL [ GetReportFeedFileUrl(clt *core.SDKClient, auth model.RequestHeader, reportId string) (string, error) ]
+    - 定向报告
+      - 关键词报告 [ Keyword(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索词报告 [ QueryWord(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索商品报告 [ Product(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 人群报告 [ Audience(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+    - 创意报告
+      - 创意报告 [ Creative(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+    - 落地页报告
+      - 落地页报告 [ LandingPage(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索访客明细报告 [ Visitor(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+  - 信息流报告 (api/report/feed) 
+    - 推广报告
+      - 信息流整体账户报告 [ Overall(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 账户报告 [ Account(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 计划报告 [ Campaign(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 单元报告 [ Adgroup(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+    - 创意报告
+      - 信息流商品报告 [ Product(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 创意报告 [ Creative(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 视频报告 [ Video(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 图片报告 [ Image(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+    - 落地页报告
+      - 落地页报告 [ LandingPage(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 信息流访客明细报告 [ Visitor(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+  - 异步报告 (api/report)
+    - 创建异步任务 [ CreateReportTask(clt *core.SDKClient, auth *model.RequestHeader, createRequest *report.CreateReportTaskRequest) (*model.ResponseHeader, string, error) ]
+    - 获取任务状态和结果 [ GetTaskStatus(clt *core.SDKClient, auth *model.RequestHeader, taskRequest *report.GetTaskStatusRequest) (*model.ResponseHeader, []report.ReportTaskStatus, error) ]
 - 资产管理 (api/asset)
   - 图片 (api/asset/image)
     - 查询图片 [ GetImage(clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetImageRequest) ([]image.Image, error) ]

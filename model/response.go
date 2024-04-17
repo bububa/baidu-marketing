@@ -14,6 +14,8 @@ type ResponseHeader struct {
 	Quota int `json:"quota,omitempty"`
 	// Failures  错误信息
 	Failures []ResponseFailure `json:"failures,omitempty"`
+	// Errors 错误信息
+	Errors []ResponseFailure `json:"errors,omitempty"`
 	// Oprs 成功操作数据条数
 	Oprs int `json:"oprs,omitempty"`
 	// Oprtime 操作时间描述
@@ -44,4 +46,18 @@ func (r Response) IsError() bool {
 func (r Response) Error() string {
 	buf, _ := json.Marshal(r.Header.Failures)
 	return string(buf)
+}
+
+// ActionCbResponse 转化追踪回调返回
+type ActionCbResponse struct {
+	ErrorCode int    `json:"error_code,omitempty"`
+	ErrorMsg  string `json:"error_msg,omitempty"`
+}
+
+func (r ActionCbResponse) IsError() bool {
+	return r.ErrorCode != 0
+}
+
+func (r ActionCbResponse) Error() string {
+	return r.ErrorMsg
 }

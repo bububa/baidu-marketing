@@ -2,6 +2,10 @@ package report
 
 // SearchMetric 搜索指标
 type SearchMetric struct {
+	// OcpcConversions 目标转化量
+	OcpcConversions int64 `json:"ocpcConversions,omitempty"`
+	// DeepOCPCConversions 深度转化量
+	DeepOCPCConversions int64 `json:"deepOCPCConversions,omitempty"`
 	// TopPageViews 上方位展现
 	TopPageViews int64 `json:"topPageViews,omitempty"`
 	// TopPClicks 上方位点击

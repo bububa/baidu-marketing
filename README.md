@@ -113,7 +113,7 @@
     - 查询图片 [ GetImage(clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetImageRequest) ([]image.Image, error) ]
   - 视频 (api/asset/video)
     - 查询图片 [ GetVideo(clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetVideoRequest) ([]video.Video, error) ]
-- 转化上报 (api/ocpc)
+- 转化追踪 (api/ocpc)
   - 广告主回传转化数据接口 [ UploadConvertData(clt *core.SDKClient, req *ocpc.UploadConvertDataRequest) error ]
   - 广告主回传无效转化数据接口 [ UploadInvalidConvertData(clt *core.SDKClient, req *ocpc.UploadInvalidConvertDataRequest) error ]
-  - APP 转化数据收集 [ ActionCb(req *ocpc.ActionCbRequest) error ]
+  - APP 转化数据收集 [ ActionCb(clt *core.SDKClient, req model.ActionCbRequest) error ]

@@ -35,3 +35,14 @@ type Request struct {
 func (r Request) Url() string {
 	return r.Body.Url()
 }
+
+// ConversionRequest 转化请求
+type ConversionRequest interface {
+	RequestBody
+	OcpcToken() string
+	SetOcpcToken(token string)
+}
+
+type ActionCbRequest interface {
+	RequestBody
+}

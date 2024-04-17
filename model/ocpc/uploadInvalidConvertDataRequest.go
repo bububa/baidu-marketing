@@ -1,5 +1,10 @@
 package ocpc
 
+import (
+	"github.com/bububa/baidu-marketing/model"
+	"github.com/bububa/baidu-marketing/util"
+)
+
 // UploadInvalidConvertDataRequest
 type UploadInvalidConvertDataRequest struct {
 	// Token API接口token，每个推广账号对应一个唯一TOKEN
@@ -22,4 +27,16 @@ type InvalidConversionType struct {
 	Confidence int `json:"confidence,omitempty"`
 	// InvalidReason 无效转化描述
 	InvalidReason string `json:"invalidReason,omitempty"`
+}
+
+func (r UploadInvalidConvertDataRequest) Url() string {
+	return util.StringsJoin(model.BASE_URL_OCPC, "uploadInvalidConvertData")
+}
+
+func (r UploadInvalidConvertDataRequest) OcpcToken() string {
+	return r.Token
+}
+
+func (r *UploadInvalidConvertDataRequest) SetOcpcToken(token string) {
+	r.Token = token
 }

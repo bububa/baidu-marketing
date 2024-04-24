@@ -3,19 +3,9 @@ package model
 // RequestHeader 请求header对象
 type RequestHeader struct {
 	// Username 推广账户名称
-	Username string `json:"username,omitempty"`
-	// Password 推广账户密码
-	Password string `json:"password,omitempty"`
-	// Token 您的token值
-	Token string `json:"token"`
-	// Target 被MCC账户管辖的普通推广账户名称
-	Target string `json:"target,omitempty"`
+	Username string `json:"userName,omitempty"`
 	// AccessToken 百度商业服务市场服务商的access_token。注意属性名是大写的T
-	AccessToken string `json:"access_token,omitempty"`
-
-	//新的用户token请求方式
-	TargetUserNameV2 string `json:"userName,omitempty"`
-	AccessTokenV2    string `json:"accessToken,omitempty"`
+	AccessToken string `json:"accessToken,omitempty"`
 }
 
 // RequestBody 请求业务数据
@@ -29,6 +19,15 @@ type Request struct {
 	Header *RequestHeader `json:"header"`
 	// Body 业务对象
 	Body RequestBody `json:"body"`
+}
+
+// SetUser set username password
+func (r *Request) SetUser(username string, accessToken string) {
+	if r.Header == nil {
+		r.Header = new(RequestHeader)
+	}
+	r.Header.Username = username
+	r.Header.AccessToken = accessToken
 }
 
 // Url 请求API 地址

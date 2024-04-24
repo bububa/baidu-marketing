@@ -8,6 +8,7 @@ import (
 // GetUserListByMccidRequest 账户管家子账号 API Request
 type GetUserListByMccidRequest struct{}
 
+// Url implement RequestBody interface
 func (r GetUserListByMccidRequest) Url() string {
 	return util.StringsJoin(model.BASE_URL_FEED, "MccFeedService/getUserListByMccid")
 }

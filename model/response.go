@@ -1,6 +1,11 @@
 package model
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"strconv"
+
+	"github.com/bububa/baidu-marketing/util"
+)
 
 // ResponseHeader API 返回header对象
 type ResponseHeader struct {
@@ -46,6 +51,25 @@ func (r Response) IsError() bool {
 func (r Response) Error() string {
 	buf, _ := json.Marshal(r.Header.Failures)
 	return string(buf)
+}
+
+type DataResponse struct {
+	// Code 请求处理状态，0：处理成功，非0：处理失败
+	Code int `json:"code,omitempty"`
+	// Message 请求处理话术
+	Message string `json:"message,omitempty"`
+	// Data 请求处理结果
+	Data json.RawMessage `json:"data,omitempty"`
+}
+
+// IsError 判断结果是否错误
+func (r DataResponse) IsError() bool {
+	return r.Code != 0
+}
+
+// Error implement error interface
+func (r DataResponse) Error() string {
+	return util.StringsJoin("code:", strconv.Itoa(r.Code), ", message:", r.Message)
 }
 
 // ActionCbResponse 转化追踪回调返回

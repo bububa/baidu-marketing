@@ -8,6 +8,10 @@
 [![GitHub license](https://img.shields.io/github/license/bububa/baidu-marketing.svg)](https://github.com/bububa/baidu-marketing/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/bububa/baidu-marketing.svg)](https://GitHub.com/bububa/baidu-marketing/releases/)
 
+- OAuth授权 (api/oauth)
+  - 换取授权令牌接口 [ AccessToken(clt *core.SDKClient, req *oauth.AccessTokenRequest) (*oauth.AccessToken, error) ]
+  - 更新授权令牌接口 [ RefreshToken(clt *core.SDKClient, req *oauth.RefreshTokenRequest) (*oauth.AccessToken, error) ]
+  - 查询授权用户信息 [ GetUserInfo(clt *core.SDKClient, req *oauth.GetUserInfoRequest) (*oauth.UserInfo, error) ]
 - 账户管理
   - 财务管理 (api/account/balance)
     - 查询账户余额成分 [ GetBalanceInfo(clt *core.SDKClient, auth model.RequestHeader, productIds[]uint64) ([]balance.BalanceInfo, error) ]

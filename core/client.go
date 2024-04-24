@@ -34,18 +34,14 @@ func defaultHttpClient() *http.Client {
 // SDKClient  object
 type SDKClient struct {
 	httpClient *http.Client
-	token      string
-	ocpcToken  string
-	username   string
-	password   string
+	appID      string
+	secret     string
 	debug      bool
 }
 
 // NewSDKClient init sdk client
-func NewSDKClient(token string, ocpcToken string) *SDKClient {
+func NewSDKClient(appID string, secret string) *SDKClient {
 	return &SDKClient{
-		token:      token,
-		ocpcToken:  ocpcToken,
 		httpClient: defaultHttpClient(),
 	}
 }
@@ -54,40 +50,21 @@ func (c *SDKClient) SetHttpClient(httpClient *http.Client) {
 	c.httpClient = httpClient
 }
 
-// Token get token
-func (c SDKClient) Token() string {
-	return c.token
-}
-
-// OcpcToken get ocpc token
-func (c SDKClient) OcpcToken() string {
-	return c.ocpcToken
-}
-
-// SetUser set username password
-func (c *SDKClient) SetUser(username string, password string) {
-	c.username = username
-	c.password = password
-}
-
 // SetDebug set debug mode
 func (c *SDKClient) SetDebug(debug bool) {
 	c.debug = debug
 }
 
+func (c *SDKClient) AppID() string {
+	return c.appID
+}
+
+func (c *SDKClient) Secret() string {
+	return c.secret
+}
+
 // Do execute api request
 func (c *SDKClient) Do(req *model.Request, resp interface{}) (*model.ResponseHeader, error) {
-	if req.Header.Token == "" {
-		req.Header.Token = c.token
-	}
-	if req.Header.AccessToken == "" {
-		if req.Header.Username == "" {
-			req.Header.Username = c.username
-		}
-		if req.Header.Password == "" {
-			req.Header.Password = c.password
-		}
-	}
 	buf := util.GetBufferPool()
 	defer util.PutBufferPool(buf)
 	if err := json.NewEncoder(buf).Encode(req); err != nil {
@@ -107,7 +84,7 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) (*model.ResponseHea
 		}
 		return &reqResp.Header, reqResp
 	}
-	if resp != nil {
+	if resp != nil && reqResp.Body != nil {
 		err = json.Unmarshal(reqResp.Body, resp)
 		if err != nil {
 			return &reqResp.Header, err
@@ -117,9 +94,6 @@ func (c *SDKClient) Do(req *model.Request, resp interface{}) (*model.ResponseHea
 }
 
 func (c *SDKClient) Conversion(req model.ConversionRequest, resp interface{}) (*model.ResponseHeader, error) {
-	if req.OcpcToken() == "" {
-		req.SetOcpcToken(c.ocpcToken)
-	}
 	buf := util.GetBufferPool()
 	defer util.PutBufferPool(buf)
 	if err := json.NewEncoder(buf).Encode(req); err != nil {
@@ -139,7 +113,7 @@ func (c *SDKClient) Conversion(req model.ConversionRequest, resp interface{}) (*
 		}
 		return &reqResp.Header, reqResp
 	}
-	if resp != nil {
+	if resp != nil && reqResp.Body != nil {
 		err = json.Unmarshal(reqResp.Body, resp)
 		if err != nil {
 			return &reqResp.Header, err
@@ -160,6 +134,30 @@ func (c *SDKClient) ActionCb(req model.ActionCbRequest) error {
 	}
 	if reqResp.IsError() {
 		return reqResp
+	}
+	return nil
+}
+
+// OAuth execute oauth api request
+func (c *SDKClient) OAuth(req model.RequestBody, resp interface{}) error {
+	buf := util.GetBufferPool()
+	defer util.PutBufferPool(buf)
+	if err := json.NewEncoder(buf).Encode(req); err != nil {
+		return err
+	}
+	var reqResp model.DataResponse
+	err := c.Post(req.Url(), buf.Bytes(), &reqResp)
+	if err != nil {
+		return err
+	}
+	if reqResp.IsError() {
+		return reqResp
+	}
+	if resp != nil && reqResp.Data != nil {
+		err = json.Unmarshal(reqResp.Data, resp)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }

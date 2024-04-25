@@ -22,16 +22,26 @@ var defaultFields = map[string]string{
 	"bd_vid":        "__BD_VID__",
 }
 
-func ClickMonitorUrl(baseUrl string, fields []string, version int) {
+func ClickMonitorUrl(baseUrl string, fields []string, version int) string {
 	values := util.GetUrlValues()
 	defer util.PutUrlValues(values)
-	for _, f := range fields {
-		if version == 2 && f == "callback_ur" {
+	var mp map[string]struct{}
+	if l := len(fields); l > 0 {
+		mp = make(map[string]struct{}, l)
+		for _, f := range fields {
+			mp[f] = struct{}{}
+		}
+	}
+	for f, v := range defaultFields {
+		if version == 2 && f == "callback_url" {
 			continue
 		}
-		if v, ok := defaultFields[f]; ok {
-			values.Set(f, v)
+		if mp != nil {
+			if _, ok := mp[f]; !ok {
+				continue
+			}
 		}
+		values.Set(f, v)
 	}
 	if version == 2 {
 		values.Set("callType", "v2")
@@ -39,4 +49,5 @@ func ClickMonitorUrl(baseUrl string, fields []string, version int) {
 		values.Set("callType", "v1")
 	}
 	values.Set("sign", "__SIGN__")
+	return util.StringsJoin(baseUrl, "?", values.Encode())
 }

@@ -31,6 +31,8 @@ func (r GetUserInfoRequest) Url() string {
 type UserInfo struct {
 	// MasterUid 同意授权用户ucid
 	MasterUid uint64 `json:"masterUid,omitempty"`
+	// MasterName 同意授权用户对应的ucname
+	MasterName string `json:"masterName,omitempty"`
 	// UserAcctType 授权账户类型
 	// 1: 普通账户
 	// 2：超管账户（客户中心和账户管家）

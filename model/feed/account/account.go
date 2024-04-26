@@ -7,6 +7,8 @@ type Account struct {
 	// Cid 账户主体ID
 	// 客户不存在主体，则cid为0
 	Cid uint64 `json:"cid,omitempty"`
+	// LiceName 账户主体名称
+	LiceName string `json:"liceName,omitempty"`
 	// Balance 账户余额。此字段仅用于查询，updateAccountFeed接口传此字段无效。
 	Balance float64 `json:"balance,omitempty"`
 	// Budget 账户预算。默认为0,表示不限预算。正常取值范围为[50-9999999.99]

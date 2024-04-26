@@ -1,5 +1,10 @@
 package report
 
+import (
+	"github.com/bububa/baidu-marketing/enum"
+	"github.com/bububa/baidu-marketing/model"
+)
+
 // Dimension 维度
 type Dimension struct {
 	// Date 日期
@@ -34,7 +39,7 @@ type Dimension struct {
 	// 枚举值：
 	// 0:0
 	// 1:1
-	AdgroupStatus int `json:"adgroupStatus,omitempty"`
+	AdgroupStatus model.Int `json:"adgroupStatus,omitempty"`
 	// AdGroupName 推广单元
 	AdGroupName string `json:"adGroupName,omitempty"`
 	// CampaignId 推广计划ID
@@ -47,7 +52,7 @@ type Dimension struct {
 	// 枚举值：
 	// 0:0
 	// 1:1
-	CampaignStatus int `json:"campaignStatus,omitempty"`
+	CampaignStatus model.Int `json:"campaignStatus,omitempty"`
 	// CampaignName 推广计划
 	CampaignName string `json:"campaignName,omitempty"`
 	// IdeaId 创意ID
@@ -70,7 +75,7 @@ type Dimension struct {
 	// 0:计算机
 	// 1:移动设备
 	// 取值与旧版报告文档不一致，请注意区分。
-	Device int `json:"device,omitempty"`
+	Device enum.Device `json:"device,omitempty"`
 	// MarketingTargetEnum 营销目标
 	// 查询时使用key，数据返回value。
 	// 枚举值：
@@ -80,20 +85,20 @@ type Dimension struct {
 	// 3:推广营销活动
 	// 4:电商店铺推广
 	// 5:商品目录
-	MarketingTargetEnum int `json:"marketingTargetEnum,omitempty"`
+	MarketingTargetEnum enum.MarketingTarget `json:"marketingTargetEnum,omitempty"`
 	// TargetingType 购买方式
 	// 查询时使用key，数据返回value。
 	// 枚举值：
 	// 0:关键词
 	// 6:网址定向
-	TargetingType int `json:"targetingType,omitempty"`
+	TargetingType enum.TargetingType `json:"targetingType,omitempty"`
 	// WinfoIdTypeEnum 定向类型
 	// 查询时使用key，数据返回value。
 	// 枚举值：
 	// 0:关键词
 	// 1:词包
 	// 3:自动扩量
-	WinfoIdTypeEnum int `json:"winfoIdTypeEnum,omitempty"`
+	WinfoIdTypeEnum enum.WinfoIdType `json:"winfoIdTypeEnum,omitempty"`
 	// WInfoNameStatus 关键词/网址
 	// 报告数据中包含了已删除物料(计划、单元等)，已删除的物料，会在名称后面标记上"[已删除]"，比如"关键词/网址[已删除]"。
 	// 未删除物料正常显示名称，没有额外标记。
@@ -108,7 +113,7 @@ type Dimension struct {
 	// 16:智能匹配核心词
 	// 17:短语匹配
 	// 48:精确匹配
-	MixWmatchEnum int `json:"mixWmatchEnum,omitempty"`
+	MixWmatchEnum enum.MixWmatch `json:"mixWmatchEnum,omitempty"`
 	// QualityEnum 质量度
 	// 查询时使用key，数据返回value。
 	// 枚举值：
@@ -122,28 +127,28 @@ type Dimension struct {
 	// 7:7
 	// 8:8
 	// 9:9
-	QualityEnum int `json:"qualityEnum,omitempty"`
+	QualityEnum model.Int `json:"qualityEnum,omitempty"`
 	// EstimateClickRate 预估点击率
 	// 用户看到您的关键词创意后，点击广告的可能性
 	// 0: 数据积累中
 	// 1: 低于平均
 	// 2: 平均水平
 	// 3: 高于平均
-	EstimateClickRate int `json:"estimateClickRate,omitempty"`
+	EstimateClickRate enum.ScoreLevel `json:"estimateClickRate,omitempty"`
 	// BusinessRelationship 创意相关性
 	// 您所使用的关键词和创意，与用户搜索意图之间的相关性
 	// 0: 数据积累中
 	// 1: 低于平均
 	// 2: 平均水平
 	// 3: 高于平均
-	BusinessRelationship int `json:"businessRelationship,omitempty"`
+	BusinessRelationship enum.ScoreLevel `json:"businessRelationship,omitempty"`
 	// LandPageExperience 落地页体验
 	// 用户点击您的关键词广告后，前往广告落地页所感受到的用户体验和质量
 	// 0: 数据积累中
 	// 1: 低于平均
 	// 2: 平均水平
 	// 3: 高于平均
-	LandPageExperience int `json:"landPageExperience,omitempty"`
+	LandPageExperience enum.ScoreLevel `json:"landPageExperience,omitempty"`
 	// WMatchId 触发模式
 	// 查询时使用key，数据返回value。
 	// 枚举值：
@@ -157,7 +162,7 @@ type Dimension struct {
 	// 31:短语
 	// 63:精确
 	// 该指标不支持小时。不能与provinceCityName同时使用。
-	WMatchId int `json:"wMatchId,omitempty"`
+	WMatchId enum.WMatchId `json:"wMatchId,omitempty"`
 	// QueryWord 搜索词
 	QueryWord string `json:"queryWord,omitempty"`
 	// QueryStatusName 账户添加状态
@@ -166,7 +171,7 @@ type Dimension struct {
 	// 0:已添加
 	// 1:未添加
 	// 2:不可添加
-	QueryStatusName int `json:"queryStatusName,omitempty"`
+	QueryStatusName enum.QueryStatus `json:"queryStatusName,omitempty"`
 	// OuterId 商品ID（商家内部ID）
 	OuterId string `json:"outerId,omitempty"`
 	// ProductName 商品名称
@@ -187,10 +192,10 @@ type Dimension struct {
 	// 1025:已转化用户
 	// 2:设备属性
 	// 4:商圈地域
-	AudienceStatusEnum int `json:"audienceStatusEnum,omitempty"`
+	AudienceStatusEnum enum.AudienceStatus `json:"audienceStatusEnum,omitempty"`
 	// SegmentId SegmentId
 	// 10101: 图集，10102: 大图，10104: 单图，10105:图文
-	SegmentId int `json:"segmentId,omitempty"`
+	SegmentId model.Int `json:"segmentId,omitempty"`
 	// BindId 标识一次绑定
 	BindId uint64 `json:"bindId,omitempty"`
 	// VideoId 视频ID
@@ -219,7 +224,7 @@ type Dimension struct {
 	// 100 1:1
 	// 320 3:1
 	// 321 1.77:1
-	SegmentType int `json:"segmentType,omitempty"`
+	SegmentType enum.SegmentType `json:"segmentType,omitempty"`
 	// SegmentDesc 主题
 	SegmentDesc string `json:"segmentDesc,omitempty"`
 	// AdgroupNameBind 绑定范围
@@ -231,7 +236,7 @@ type Dimension struct {
 	// 2: 1.61:1
 	// 3: 3:1
 	// 4: 1.77:1
-	PicScale int `json:"picScale,omitempty"`
+	PicScale enum.PicScale `json:"picScale,omitempty"`
 	// ClickRegion 点击区域
 	// 仅支持用于filters中进行数据筛选
 	// 0为仅限图片，不加过滤为整体广告
@@ -270,7 +275,7 @@ type Dimension struct {
 	// 11072:百科服务化
 	// 3037:全景橱窗
 	// 3198:热点橱窗
-	ProductSegment int `json:"productSegment,omitempty"`
+	ProductSegment enum.ProductSegment `json:"productSegment,omitempty"`
 	// ProviceName 省
 	// 该指标不支持小时。
 	ProviceName string `json:"proviceName,omitempty"`
@@ -321,7 +326,7 @@ type Dimension struct {
 	// 86:直播间打赏
 	// 87:直播间购物袋点击
 	// 999999:多目标转化
-	OcpcTransType int `json:"ocpcTransType,omitempty"`
+	OcpcTransType enum.OcpcTransType `json:"ocpcTransType,omitempty"`
 	// DeepConvertType 深度转化
 	// 查询时使用key，数据返回value。
 	// 枚举值：
@@ -334,7 +339,7 @@ type Dimension struct {
 	// 45:商品下单成功
 	// 53:订单核对成功
 	// 54:收货成功
-	DeepConvertType int `json:"deepConvertType,omitempty"`
+	DeepConvertType enum.DeepConvertType `json:"deepConvertType,omitempty"`
 	// LandingPageUrl 落地页url
 	LandingPageUrl string `json:"landingPageUrl,omitempty"`
 	// LandingPageUrlId 落地url签名
@@ -351,7 +356,7 @@ type Dimension struct {
 	// 4:百度小说
 	// 5:百青藤
 	// 6:默认
-	FeedFlowTypeEnum int `json:"feedFlowTypeEnum,omitempty"`
+	FeedFlowTypeEnum enum.FeedFlowType `json:"feedFlowTypeEnum,omitempty"`
 	// FeedSubjectEnum 该字段仅支持用于Filter中筛选数据使用。
 	// 查询时使用key，数据返回value。
 	// 枚举值：
@@ -363,12 +368,12 @@ type Dimension struct {
 	// 5:商品目录
 	// 6:门店推广
 	// 7:电商店铺
-	FeedSubjectEnum int `json:"feedSubjectEnum,omitempty"`
+	FeedSubjectEnum enum.FeedSubject `json:"feedSubjectEnum,omitempty"`
 	// BsType 该字段仅支持用于Filter中筛选数据使用。
 	// 1：普通报告
 	// 3：商品报告
 	// 7：信息流RTA
-	BsType int `json:"bsType,omitempty"`
+	BsType enum.BsType `json:"bsType,omitempty"`
 	// FeedMaterialStyleEnum 该字段仅支持用于Filter中筛选数据使用。
 	// 查询时使用key，数据返回value。
 	// 枚举值：
@@ -385,7 +390,7 @@ type Dimension struct {
 	// 7:横幅
 	// 8:横版视频
 	// 9:竖版视频
-	FeedMaterialStyleEnum int `json:"feedMaterialStyleEnum,omitempty"`
+	FeedMaterialStyleEnum enum.FeedMaterialStyle `json:"feedMaterialStyleEnum,omitempty"`
 	// BidNew 出价
 	BidNew float64 `json:"bidNew,omitempty"`
 }

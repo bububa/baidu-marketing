@@ -27,3 +27,5 @@
  test
  config.toml
  .vim
+
+.idea/

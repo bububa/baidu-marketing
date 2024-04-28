@@ -52,7 +52,7 @@ type Filter struct {
 
 // GetReportDataResponse 一站式多渠道报告 API Response
 type GetReportDataResponse struct {
-	Data *ReportData `json:"data,omitempty"`
+	Data []ReportData `json:"data,omitempty"`
 }
 
 type ReportData struct {

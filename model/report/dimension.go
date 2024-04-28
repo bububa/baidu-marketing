@@ -39,7 +39,7 @@ type Dimension struct {
 	// 枚举值：
 	// 0:0
 	// 1:1
-	AdgroupStatus model.Int `json:"adgroupStatus,omitempty"`
+	AdGroupStatus model.Int `json:"adGroupStatus,omitempty"`
 	// AdGroupName 推广单元
 	AdGroupName string `json:"adGroupName,omitempty"`
 	// CampaignId 推广计划ID

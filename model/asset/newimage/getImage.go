@@ -1,8 +1,8 @@
 package newimage
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // GetImageRequest （新图片服务（ImageManageService）打通了搜索图库与信息流图库）获取图片素材API Request

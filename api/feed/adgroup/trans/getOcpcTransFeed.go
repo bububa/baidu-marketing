@@ -1,9 +1,9 @@
 package trans
 
 import (
-	"github.com/bububa/baidu-marketing/core"
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/model/feed/adgroup/trans"
+	"github.com/xiaoshouchen/baidu-marketing/core"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/model/feed/adgroup/trans"
 )
 
 // GetOcpcTransFeed 查询转化追踪

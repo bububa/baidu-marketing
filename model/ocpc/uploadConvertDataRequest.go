@@ -1,8 +1,8 @@
 package ocpc
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // UploadConvertDataRequest 广告主回传转化数据 API Request

@@ -1,6 +1,6 @@
 package campaign
 
-import "github.com/bububa/baidu-marketing/model"
+import "github.com/xiaoshouchen/baidu-marketing/model"
 
 // Campaign 推广计划
 type Campaign struct {

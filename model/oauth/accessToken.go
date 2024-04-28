@@ -1,8 +1,8 @@
 package oauth
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // AccessToken 授权令牌

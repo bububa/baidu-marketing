@@ -1,9 +1,9 @@
 package newimage
 
 import (
-	"github.com/bububa/baidu-marketing/core"
-	"github.com/bububa/baidu-marketing/model"
-	image2 "github.com/bububa/baidu-marketing/model/asset/newimage"
+	"github.com/xiaoshouchen/baidu-marketing/core"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	image2 "github.com/xiaoshouchen/baidu-marketing/model/asset/newimage"
 )
 
 // UploadImage 图片上传接口，上传后搜索推广与信息流推广可共用。上传时不限制单张图片大小，单次请求不超过10M。

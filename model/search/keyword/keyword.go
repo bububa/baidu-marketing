@@ -1,6 +1,6 @@
 package keyword
 
-import "github.com/bububa/baidu-marketing/model"
+import "github.com/xiaoshouchen/baidu-marketing/model"
 
 // Keyword 关键词对象
 type Keyword struct {

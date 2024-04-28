@@ -1,8 +1,8 @@
 package balance
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // GetBalanceInfoRequest 查询账户余额成分 API Request

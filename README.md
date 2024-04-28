@@ -1,12 +1,12 @@
 # 百度营销 MarketingAPI Golang SDK
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/bububa/baidu-marketing.svg)](https://pkg.go.dev/github.com/bububa/baidu-marketing)
-[![Go](https://github.com/bububa/baidu-marketing/actions/workflows/go.yml/badge.svg)](https://github.com/bububa/baidu-marketing/actions/workflows/go.yml)
-[![goreleaser](https://github.com/bububa/baidu-marketing/actions/workflows/goreleaser.yml/badge.svg)](https://github.com/bububa/baidu-marketing/actions/workflows/goreleaser.yml)
-[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/bububa/baidu-marketing.svg)](https://github.com/bububa/baidu-marketing)
-[![GoReportCard](https://goreportcard.com/badge/github.com/bububa/baidu-marketing)](https://goreportcard.com/report/github.com/bububa/baidu-marketing)
-[![GitHub license](https://img.shields.io/github/license/bububa/baidu-marketing.svg)](https://github.com/bububa/baidu-marketing/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/bububa/baidu-marketing.svg)](https://GitHub.com/bububa/baidu-marketing/releases/)
+[![Go Reference](https://pkg.go.dev/badge/github.com/xiaoshouchen/baidu-marketing.svg)](https://pkg.go.dev/github.com/xiaoshouchen/baidu-marketing)
+[![Go](https://github.com/xiaoshouchen/baidu-marketing/actions/workflows/go.yml/badge.svg)](https://github.com/xiaoshouchen/baidu-marketing/actions/workflows/go.yml)
+[![goreleaser](https://github.com/xiaoshouchen/baidu-marketing/actions/workflows/goreleaser.yml/badge.svg)](https://github.com/xiaoshouchen/baidu-marketing/actions/workflows/goreleaser.yml)
+[![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/xiaoshouchen/baidu-marketing.svg)](https://github.com/xiaoshouchen/baidu-marketing)
+[![GoReportCard](https://goreportcard.com/badge/github.com/xiaoshouchen/baidu-marketing)](https://goreportcard.com/report/github.com/xiaoshouchen/baidu-marketing)
+[![GitHub license](https://img.shields.io/github/license/xiaoshouchen/baidu-marketing.svg)](https://github.com/xiaoshouchen/baidu-marketing/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/xiaoshouchen/baidu-marketing.svg)](https://GitHub.com/xiaoshouchen/baidu-marketing/releases/)
 
 - OAuth授权 (api/oauth)
   - 换取授权令牌接口 [ AccessToken(clt *core.SDKClient, req *oauth.AccessTokenRequest) (*oauth.AccessToken, error) ]

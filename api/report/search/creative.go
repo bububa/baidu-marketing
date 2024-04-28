@@ -1,10 +1,10 @@
 package search
 
 import (
-	reportApi "github.com/bububa/baidu-marketing/api/report"
-	"github.com/bububa/baidu-marketing/core"
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/model/report"
+	reportApi "github.com/xiaoshouchen/baidu-marketing/api/report"
+	"github.com/xiaoshouchen/baidu-marketing/core"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/model/report"
 )
 
 // Creative 创意报告

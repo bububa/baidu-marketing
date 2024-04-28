@@ -1,9 +1,9 @@
 package app
 
 import (
-	"github.com/bububa/baidu-marketing/core"
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/model/search/app"
+	"github.com/xiaoshouchen/baidu-marketing/core"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/model/search/app"
 )
 
 // GetAppList 获取APP素材

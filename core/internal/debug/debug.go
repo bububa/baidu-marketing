@@ -6,7 +6,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 func PrintError(err error, debug bool) {

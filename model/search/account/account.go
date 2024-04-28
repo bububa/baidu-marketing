@@ -1,6 +1,6 @@
 package account
 
-import "github.com/bububa/baidu-marketing/model"
+import "github.com/xiaoshouchen/baidu-marketing/model"
 
 // Account 账户信息
 type Account struct {

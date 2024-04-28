@@ -1,9 +1,9 @@
 package image
 
 import (
-	"github.com/bububa/baidu-marketing/core"
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/model/asset/image"
+	"github.com/xiaoshouchen/baidu-marketing/core"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/model/asset/image"
 )
 
 // GetImage 通过图片规格、大小、格式、时间区间等条件，筛选出合适的图片返回

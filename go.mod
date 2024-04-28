@@ -1,3 +1,3 @@
-module github.com/bububa/baidu-marketing
+module github.com/xiaoshouchen/baidu-marketing
 
 go 1.20

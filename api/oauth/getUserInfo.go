@@ -1,8 +1,8 @@
 package oauth
 
 import (
-	"github.com/bububa/baidu-marketing/core"
-	"github.com/bububa/baidu-marketing/model/oauth"
+	"github.com/xiaoshouchen/baidu-marketing/core"
+	"github.com/xiaoshouchen/baidu-marketing/model/oauth"
 )
 
 // GetUserInfo 查询授权用户信息

@@ -1,9 +1,9 @@
 package report
 
 import (
-	"github.com/bububa/baidu-marketing/enum"
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/enum"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // CreateReportTaskRequest 创建异步任务 API Request

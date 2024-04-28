@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/bububa/baidu-marketing/enum"
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/enum"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // ActionCbRequest 转化追踪回调 请求

@@ -1,8 +1,8 @@
 package trans
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // UpdateOcpcTransFeedRequest 更新转化追踪 API Request

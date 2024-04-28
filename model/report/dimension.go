@@ -1,8 +1,8 @@
 package report
 
 import (
-	"github.com/bububa/baidu-marketing/enum"
-	"github.com/bububa/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/enum"
+	"github.com/xiaoshouchen/baidu-marketing/model"
 )
 
 // Dimension 维度

@@ -1,8 +1,8 @@
 package campaign
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // GetBindBusinessPointListRequest 查询计划已使用的推广业务 API Request

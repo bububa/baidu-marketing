@@ -1,8 +1,8 @@
 package balance
 
 import (
-	"github.com/bububa/baidu-marketing/model"
-	"github.com/bububa/baidu-marketing/util"
+	"github.com/xiaoshouchen/baidu-marketing/model"
+	"github.com/xiaoshouchen/baidu-marketing/util"
 )
 
 // GetPaymentRecordRequest 查询付款信息与待加款信息 API Request

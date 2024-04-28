@@ -1,6 +1,6 @@
 package ocpc
 
-import "github.com/bububa/baidu-marketing/util"
+import "github.com/xiaoshouchen/baidu-marketing/util"
 
 var defaultFields = map[string]string{
 	"advertiser_id": "__USER_ID__",

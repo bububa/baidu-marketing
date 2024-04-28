@@ -220,7 +220,8 @@ type Dimension struct {
 	// SegmentSign 图片签名
 	SegmentSign string `json:"segmentSign,omitempty"`
 	// SegmentType 比例
-	// 只能取以下值： 101 1:1
+	// 只能取以下值
+	// 101 1:1
 	// 100 1:1
 	// 320 3:1
 	// 321 1.77:1

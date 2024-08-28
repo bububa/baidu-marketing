@@ -1,6 +1,7 @@
 package balance
 
 import (
+	"context"
 	"time"
 
 	"github.com/bububa/baidu-marketing/core"
@@ -10,7 +11,7 @@ import (
 
 // GetAccountTransferHistory 查询转账记录
 // 查询MCC账户历史转账记录，仅适用于KA账户
-func GetAccountTransferHistory(clt *core.SDKClient, auth *model.RequestHeader, startTime time.Time, endTime time.Time) (*model.ResponseHeader, []balance.AccountTransferHistory, error) {
+func GetAccountTransferHistory(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, startTime time.Time, endTime time.Time) (*model.ResponseHeader, []balance.AccountTransferHistory, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: &balance.GetAccountTransferHistoryRequest{
@@ -19,6 +20,6 @@ func GetAccountTransferHistory(clt *core.SDKClient, auth *model.RequestHeader, s
 		},
 	}
 	var resp balance.GetAccountTransferHistoryResponse
-	header, err := clt.Do(req, &resp)
+	header, err := clt.Do(ctx, req, &resp)
 	return header, resp.Data, err
 }

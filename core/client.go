@@ -42,23 +42,16 @@ type SDKClient struct {
 }
 
 // NewSDKClient init sdk client
-func NewSDKClient(appID string, secret string) *SDKClient {
-	return &SDKClient{
+func NewSDKClient(appID string, secret string, opts ...Option) *SDKClient {
+	ret := &SDKClient{
 		httpClient: defaultHttpClient(),
+		appID:      appID,
+		secret:     secret,
 	}
-}
-
-func (c *SDKClient) SetHttpClient(httpClient *http.Client) {
-	c.httpClient = httpClient
-}
-
-func (c *SDKClient) WithTracer(namespace string) {
-	c.tracer = NewOtel(namespace, c.AppID())
-}
-
-// SetDebug set debug mode
-func (c *SDKClient) SetDebug(debug bool) {
-	c.debug = debug
+	for _, opt := range opts {
+		opt(ret)
+	}
+	return ret
 }
 
 func (c *SDKClient) AppID() string {

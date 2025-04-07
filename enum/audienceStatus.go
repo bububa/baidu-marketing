@@ -12,6 +12,7 @@ func (e AudienceStatus) Values() []AudienceStatus {
 		{4, "商圈地域"},
 	}
 }
+
 func (e *AudienceStatus) UnmarshalJSON(b []byte) error {
 	v, err := UnmarshalJSON[int](b)
 	if err != nil {

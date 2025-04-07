@@ -1,6 +1,8 @@
 package campaign
 
 import (
+	"context"
+
 	"github.com/bububa/baidu-marketing/core"
 	"github.com/bububa/baidu-marketing/model"
 	"github.com/bububa/baidu-marketing/model/search/campaign"
@@ -8,7 +10,7 @@ import (
 
 // UpdateCampaign 更新计划
 // 根据指定的计划ID更新推广计划的属性
-func UpdateCampaign(clt *core.SDKClient, auth *model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) {
+func UpdateCampaign(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) {
 	req := &model.Request{
 		Header: auth,
 		Body: campaign.UpdateCampaignRequest{
@@ -16,6 +18,6 @@ func UpdateCampaign(clt *core.SDKClient, auth *model.RequestHeader, campaigns []
 		},
 	}
 	var resp campaign.UpdateCampaignResponse
-	header, err := clt.Do(req, &resp)
+	header, err := clt.Do(ctx, req, &resp)
 	return header, resp.Data, err
 }

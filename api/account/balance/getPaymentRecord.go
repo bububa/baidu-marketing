@@ -1,6 +1,8 @@
 package balance
 
 import (
+	"context"
+
 	"github.com/bububa/baidu-marketing/core"
 	"github.com/bububa/baidu-marketing/model"
 	"github.com/bububa/baidu-marketing/model/account/balance"
@@ -8,13 +10,13 @@ import (
 
 // GetPaymentRecord 查询付款信息与待加款信息
 // 查询付款记录接口，支持获取直销客户实际资金流动、直销客户优惠资金流动、KA实际资金流动、KA优惠资金流动、KA待加款记录。
-func GetPaymentRecord(clt *core.SDKClient, auth *model.RequestHeader, reqBody *balance.GetPaymentRecordRequest) (*model.ResponseHeader, *balance.GetPaymentRecordResponse, error) {
+func GetPaymentRecord(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *balance.GetPaymentRecordRequest) (*model.ResponseHeader, *balance.GetPaymentRecordResponse, error) {
 	req := &model.Request{
 		Header: auth,
 		Body:   reqBody,
 	}
 	var resp balance.GetPaymentRecordResponse
-	header, err := clt.Do(req, &resp)
+	header, err := clt.Do(ctx, req, &resp)
 	if err != nil && header != nil && header.Status != 1 {
 		return header, nil, err
 	}

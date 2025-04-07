@@ -9,115 +9,115 @@
 [![GitHub release](https://img.shields.io/github/release/bububa/baidu-marketing.svg)](https://GitHub.com/bububa/baidu-marketing/releases/)
 
 - OAuth授权 (api/oauth)
-  - 换取授权令牌接口 [ AccessToken(clt *core.SDKClient, req *oauth.AccessTokenRequest) (*oauth.AccessToken, error) ]
-  - 更新授权令牌接口 [ RefreshToken(clt *core.SDKClient, req *oauth.RefreshTokenRequest) (*oauth.AccessToken, error) ]
-  - 查询授权用户信息 [ GetUserInfo(clt *core.SDKClient, req *oauth.GetUserInfoRequest) (*oauth.UserInfo, error) ]
+  - 换取授权令牌接口 [ AccessToken(ctx context.Context, clt *core.SDKClient, req *oauth.AccessTokenRequest) (*oauth.AccessToken, error) ]
+  - 更新授权令牌接口 [ RefreshToken(ctx context.Context, clt *core.SDKClient, req *oauth.RefreshTokenRequest) (*oauth.AccessToken, error) ]
+  - 查询授权用户信息 [ GetUserInfo(ctx context.Context, clt *core.SDKClient, req *oauth.GetUserInfoRequest) (*oauth.UserInfo, error) ]
 - 账户管理
   - 财务管理 (api/account/balance)
-    - 查询账户余额成分 [ GetBalanceInfo(clt *core.SDKClient, auth model.RequestHeader, productIds[]uint64) ([]balance.BalanceInfo, error) ]
-    - 查询转账记录 [ GetAccountTransferHistory(clt *core.SDKClient, auth model.RequestHeader, startTime time.Time, endTime time.Time) ([]balance.AccountTransferHistory, error) ]
-    - 查询待加款信息 [ GetPaymentHistory(clt *core.SDK, auth model.RequestHeader, reqBody balance.GetPaymentHistoryRequest) ([]balance.PaymentHistory, error) ]
-    - 查询付款信息与待加款信息 [ GetPaymentRecord(clt *core.SDK, auth model.RequestHeader, reqBody balance.GetPaymentRecordRequest) (*balance.GetPaymentRecordResponse, error) ]
-  - 账户管家管理 [ GetUserListByMccid(clt *core.SDK, auth model.RequestHeader) ([]account.MccUser, error) ]
+    - 查询账户余额成分 [ GetBalanceInfo(ctx context.Context, clt \*core.SDKClient, auth model.RequestHeader, productIds[]uint64) ([]balance.BalanceInfo, error) ]
+    - 查询转账记录 [ GetAccountTransferHistory(ctx context.Context, clt \*core.SDKClient, auth model.RequestHeader, startTime time.Time, endTime time.Time) ([]balance.AccountTransferHistory, error) ]
+    - 查询待加款信息 [ GetPaymentHistory(ctx context.Context, clt \*core.SDK, auth model.RequestHeader, reqBody balance.GetPaymentHistoryRequest) ([]balance.PaymentHistory, error) ]
+    - 查询付款信息与待加款信息 [ GetPaymentRecord(ctx context.Context, clt *core.SDK, auth model.RequestHeader, reqBody balance.GetPaymentRecordRequest) (*balance.GetPaymentRecordResponse, error) ]
+  - 账户管家管理 [ GetUserListByMccid(ctx context.Context, clt \*core.SDK, auth model.RequestHeader) ([]account.MccUser, error) ]
 - 搜索广告投放 (api/search)
   - 账户 (api/search/account)
-    - 查询账户 [ GetAccountInfo(clt *core.SDKClient, auth model.RequestHeader, accountFields []string) ([]account.Account, error) ]
-    - 更新账户 [ UpdateAccountInfo(clt *core.SDKClient, auth model.RequestHeader, account *account.Account) ([]account.Account, error) ]
+    - 查询账户 [ GetAccountInfo(ctx context.Context, clt \*core.SDKClient, auth model.RequestHeader, accountFields []string) ([]account.Account, error) ]
+    - 更新账户 [ UpdateAccountInfo(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, account *account.Account) ([]account.Account, error) ]
   - 计划 (api/search/campaign)
-    - 查询计划 [ GetCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignRequest) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 添加计划 [ AddCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.AddCampaignRequest) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 更新计划 [ UpdateCampaign(clt *core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 删除计划 [ DeleteCampaign(clt *core.SDKClient, auth model.RequestHeader, campaignIds ...uint64) (*model.ResponseHeader, error) ]
-    - 查询计划已使用的推广业务 [ GetBindBusinessPointList(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetBindBusinessPointListRequest) (*model.ResponseHeader, []campaign.BusinessPoint, error) ]
+    - 查询计划 [ GetCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignRequest) (\*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 添加计划 [ AddCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.AddCampaignRequest) (\*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 更新计划 [ UpdateCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 删除计划 [ DeleteCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, campaignIds ...uint64) (*model.ResponseHeader, error) ]
+    - 查询计划已使用的推广业务 [ GetBindBusinessPointList(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetBindBusinessPointListRequest) (\*model.ResponseHeader, []campaign.BusinessPoint, error) ]
   - 单元 (api/search/adgroup)
-    - 查询单元 [ GetAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *adgroup.GetAdgroupRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
-    - 添加单元 [ AddAdgroup(clt *core.SDKClient, auth model.RequestHeader, reqBody *adgroup.AddAdgroupRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
-    - 更新单元 [ UpdateAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroups []adgroup.Adgroup) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
-    - 删除单元 [ DeleteAdgroup(clt *core.SDKClient, auth model.RequestHeader, adgroupIds ...uint64) (*model.ResponseHeader, error) ]
+    - 查询单元 [ GetAdgroup(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *adgroup.GetAdgroupRequest) (\*model.ResponseHeader, []adgroup.Adgroup, error) ]
+    - 添加单元 [ AddAdgroup(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *adgroup.AddAdgroupRequest) (\*model.ResponseHeader, []adgroup.Adgroup, error) ]
+    - 更新单元 [ UpdateAdgroup(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, adgroups []adgroup.Adgroup) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
+    - 删除单元 [ DeleteAdgroup(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, adgroupIds ...uint64) (*model.ResponseHeader, error) ]
   - 关键词 (api/search/keyword)
-    - 查询关键词 [ GetKeyword(clt *core.SDKClient, auth model.RequestHeader, reqBody *keyword.GetKeywordRequest) (*model.ResponseHeader, []keyword.Keyword, error) ]
-    - 添加关键词 [ AddWord(clt *core.SDKClient, auth *model.RequestHeader, reqBody *keyword.AddWordRequest) (*model.ResponseHeader, []keyword.Keyword, error) ]
-    - 更新关键词 [ UpdateWord(clt *core.SDKClient, auth *model.RequestHeader, reqBody *keyword.Keyword) (*model.ResponseHeader, []keyword.Keyword, error) ]
-    - 删除关键词 [ DeleteWord(clt *core.SDKClient, auth *model.RequestHeader, keywordIds ...uint64) (*model.ResponseHeader, []keyword.Keyword, error)]
+    - 查询关键词 [ GetKeyword(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *keyword.GetKeywordRequest) (\*model.ResponseHeader, []keyword.Keyword, error) ]
+    - 添加关键词 [ AddWord(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *keyword.AddWordRequest) (*model.ResponseHeader, []keyword.Keyword, error) ]
+    - 更新关键词 [ UpdateWord(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *keyword.Keyword) (*model.ResponseHeader, []keyword.Keyword, error) ]
+    - 删除关键词 [ DeleteWord(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, keywordIds ...uint64) (\*model.ResponseHeader, []keyword.Keyword, error)]
   - 创意 (api/search/creative)
     - 基础创基
-      - 查询基础创意 [ GetCreative(clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
-      - 添加基础创意 [ AddCreative(clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.AddCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
-      - 更新基础创意 [ UpdateCreative(clt *core.SDKClient, auth *model.RequestHeader, creatives []creative.Creative) (*model.ResponseHeader, []creative.Creative, error) ]
-      - 删除基础创意 [ DeleteCreative(clt *core.SDKClient, auth *model.RequestHeader, creativeIds ...uint64) (*model.ResponseHeader, error) ]
+      - 查询基础创意 [ GetCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
+      - 添加基础创意 [ AddCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.AddCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
+      - 更新基础创意 [ UpdateCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, creatives []creative.Creative) (\*model.ResponseHeader, []creative.Creative, error) ]
+      - 删除基础创意 [ DeleteCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, creativeIds ...uint64) (*model.ResponseHeader, error) ]
   - 创意组件
     - APP 服务 (api/search/app)
-      - 获取APP素材 [ GetAppList(clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.GetAppListRequest) (*model.ResponseHeader, []app.AppInfoItemList, error) ]
+      - 获取APP素材 [ GetAppList(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.GetAppListRequest) (*model.ResponseHeader, []app.AppInfoItemList, error) ]
     - APP绑定服务 (api/search/app)
-      - 查询APP绑定 [ GetAdgroupAppBind(clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.GetAdgroupAppBindRequest) (*model.ResponseHeader, []app.AppBindItem, error) ]
-      - 添加APP绑定 [ AddAdgroupAppBind(clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.AddAdgroupAppBindRequest) (*model.ResponseHeader, []app.AppBindItem, error) ]
-      - 删除APP绑定 [ DeleteAdgroupAppBind(clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.DeleteAdgroupAppBindRequest) (*model.ResponseHeader,[]app.AppBindItem, error) ]
+      - 查询APP绑定 [ GetAdgroupAppBind(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.GetAdgroupAppBindRequest) (*model.ResponseHeader, []app.AppBindItem, error) ]
+      - 添加APP绑定 [ AddAdgroupAppBind(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.AddAdgroupAppBindRequest) (*model.ResponseHeader, []app.AppBindItem, error) ]
+      - 删除APP绑定 [ DeleteAdgroupAppBind(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *app.DeleteAdgroupAppBindRequest) (*model.ResponseHeader,[]app.AppBindItem, error) ]
 - 信息流广告投放 (api/feed)
   - 账户 (api/feed/account)
-    - 查询账户 [ GetAccountFeed(clt *core.SDKClient, auth model.RequestHeader, accountFields []string) (*model.ResponseHeader, []account.Account, error) ]
-    - 更新账户 [ UpdateAccountFeed(clt *core.SDKClient, auth model.RequestHeader, budget float64) (*model.ResponseHeader, []account.Account, error) ]
+    - 查询账户 [ GetAccountFeed(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, accountFields []string) (*model.ResponseHeader, []account.Account, error) ]
+    - 更新账户 [ UpdateAccountFeed(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, budget float64) (*model.ResponseHeader, []account.Account, error) ]
   - 计划 (api/feed/campaign)
-    - 查询计划 [ GetCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignFeedRequest) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 添加计划 [ AddCampaign(clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.AddCampaignRequest) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 更新计划 [ UpdateCampaign(clt *core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 删除计划 [ DeleteCampaign(clt *core.SDKClient, auth model.RequestHeader, campaignIds ...uint64) (*model.ResponseHeader, []campaign.Campaign, error) ]
-    - 查询APP信息 [ GetJsKpAppList(clt *core.SDKClient, auth *model.RequestHeader, reqBody *campaign.GetJsKpAppListRequest) (*model.ResponseHeader, []campaign.AppInfo, error) ]
+    - 查询计划 [ GetCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.GetCampaignFeedRequest) (\*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 添加计划 [ AddCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *campaign.AddCampaignRequest) (\*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 更新计划 [ UpdateCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, campaigns []campaign.Campaign) (*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 删除计划 [ DeleteCampaign(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, campaignIds ...uint64) (*model.ResponseHeader, []campaign.Campaign, error) ]
+    - 查询APP信息 [ GetJsKpAppList(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *campaign.GetJsKpAppListRequest) (*model.ResponseHeader, []campaign.AppInfo, error) ]
   - 单元
     - 推广单元 (api/feed/adgroup)
-      - 查询推广单元 [ GetAdgroup(clt *core.SDKClient, auth *model.RequestHeader, reqBody *adgroup.GetAdgroupFeedRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
-      - 添加单元 [ AddAdgroup(clt *core.SDKClient, auth *model.RequestHeader, reqBody *adgroup.AddAdgroupRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
-      - 更新单元 [ UpdateAdgroup(clt *core.SDKClient, auth *model.RequestHeader, adgroups []adgroup.Adgroup) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
-      - 删除单元 [ DeleteAdgroup(clt *core.SDKClient, auth *model.RequestHeader, adgroupFeedIds ...uint64) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
+      - 查询推广单元 [ GetAdgroup(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *adgroup.GetAdgroupFeedRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
+      - 添加单元 [ AddAdgroup(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *adgroup.AddAdgroupRequest) (*model.ResponseHeader, []adgroup.Adgroup, error) ]
+      - 更新单元 [ UpdateAdgroup(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, adgroups []adgroup.Adgroup) (\*model.ResponseHeader, []adgroup.Adgroup, error) ]
+      - 删除单元 [ DeleteAdgroup(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, adgroupFeedIds ...uint64) (\*model.ResponseHeader, []adgroup.Adgroup, error) ]
     - 转化追踪 (api/feed/trands)
-      - 查询转化追踪 [ GetOcpcTransFeed(clt *core.SDKClient, auth *model.RequestHeader, reqBody *trans.GetOcpcTransFeedRequest) (*model.ResponseHeader, []trans.OcpcTransFeed, error) ] 
-      - 添加转化追踪 [ AddOcpcTransFeed(clt *core.SDKClient, auth *model.RequestHeader, list []trans.OcpcTransFeed) (*model.ResponseHeader, []trans.OcpcTransFeed, error) ]
-      - 修改转化追踪 [ UpdateOcpcTransFeed(clt *core.SDKClient, auth *model.RequestHeader, list []trans.OcpcTransFeed) (*model.ResponseHeader, []trans.OcpcTransFeed, error) ]
+      - 查询转化追踪 [ GetOcpcTransFeed(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *trans.GetOcpcTransFeedRequest) (*model.ResponseHeader, []trans.OcpcTransFeed, error) ]
+      - 添加转化追踪 [ AddOcpcTransFeed(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, list []trans.OcpcTransFeed) (\*model.ResponseHeader, []trans.OcpcTransFeed, error) ]
+      - 修改转化追踪 [ UpdateOcpcTransFeed(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, list []trans.OcpcTransFeed) (\*model.ResponseHeader, []trans.OcpcTransFeed, error) ]
   - 创意 (api/feed/creative)
-    - 查询创意 [ GetCreativeFeed(clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
-    - 添加创意 [ AddCreative(clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.AddCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
-    - 更新创意 [ UpdateCreative(clt *core.SDKClient, auth *model.RequestHeader, creatives []creative.Creative) (*model.ResponseHeader, []creative.Creative, error) ]
-    - 删除创意 [ DeleteCreative(clt *core.SDKClient, auth *model.RequestHeader, creativeFeedIds ...uint64) (*model.ResponseHeader, []creative.Creative, error) ]
+    - 查询创意 [ GetCreativeFeed(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.GetCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
+    - 添加创意 [ AddCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reqBody *creative.AddCreativeRequest) (*model.ResponseHeader, []creative.Creative, error) ]
+    - 更新创意 [ UpdateCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, creatives []creative.Creative) (\*model.ResponseHeader, []creative.Creative, error) ]
+    - 删除创意 [ DeleteCreative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, creativeFeedIds ...uint64) (\*model.ResponseHeader, []creative.Creative, error) ]
 - 数据报告 (api/report)
-  - 一站式多渠道报告 [ GetReportData(clt *core.SDKClient, auth *model.RequestHeader, reportRequest report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+  - 一站式多渠道报告 [ GetReportData(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
   - 搜索报告 (api/report/search)
     - 推广报告
-      - 搜索整体账户报告 [ Overall(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 账户报告 [ Account(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 计划报告 [ Campaign(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 单元报告 [ Adgroup(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索整体账户报告 [ Overall(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 账户报告 [ Account(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 计划报告 [ Campaign(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 单元报告 [ Adgroup(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
     - 定向报告
-      - 关键词报告 [ Keyword(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 搜索词报告 [ QueryWord(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 搜索商品报告 [ Product(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 人群报告 [ Audience(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 关键词报告 [ Keyword(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索词报告 [ QueryWord(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索商品报告 [ Product(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 人群报告 [ Audience(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
     - 创意报告
-      - 创意报告 [ Creative(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 创意报告 [ Creative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
     - 落地页报告
-      - 落地页报告 [ LandingPage(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 搜索访客明细报告 [ Visitor(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-  - 信息流报告 (api/report/feed) 
+      - 落地页报告 [ LandingPage(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 搜索访客明细报告 [ Visitor(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+  - 信息流报告 (api/report/feed)
     - 推广报告
-      - 信息流整体账户报告 [ Overall(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 账户报告 [ Account(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 计划报告 [ Campaign(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 单元报告 [ Adgroup(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 信息流整体账户报告 [ Overall(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 账户报告 [ Account(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 计划报告 [ Campaign(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 单元报告 [ Adgroup(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
     - 创意报告
-      - 信息流商品报告 [ Product(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 创意报告 [ Creative(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 视频报告 [ Video(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 图片报告 [ Image(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 信息流商品报告 [ Product(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 创意报告 [ Creative(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 视频报告 [ Video(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 图片报告 [ Image(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
     - 落地页报告
-      - 落地页报告 [ LandingPage(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
-      - 信息流访客明细报告 [ Visitor(clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 落地页报告 [ LandingPage(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
+      - 信息流访客明细报告 [ Visitor(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, reportRequest *report.GetReportDataRequest) (*model.ResponseHeader, *report.ReportData, error) ]
   - 异步报告 (api/report)
-    - 创建异步任务 [ CreateReportTask(clt *core.SDKClient, auth *model.RequestHeader, createRequest *report.CreateReportTaskRequest) (*model.ResponseHeader, string, error) ]
-    - 获取任务状态和结果 [ GetTaskStatus(clt *core.SDKClient, auth *model.RequestHeader, taskRequest *report.GetTaskStatusRequest) (*model.ResponseHeader, []report.ReportTaskStatus, error) ]
+    - 创建异步任务 [ CreateReportTask(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, createRequest *report.CreateReportTaskRequest) (*model.ResponseHeader, string, error) ]
+    - 获取任务状态和结果 [ GetTaskStatus(ctx context.Context, clt *core.SDKClient, auth *model.RequestHeader, taskRequest *report.GetTaskStatusRequest) (*model.ResponseHeader, []report.ReportTaskStatus, error) ]
 - 资产管理 (api/asset)
   - 图片 (api/asset/image)
-    - 查询图片 [ GetImage(clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetImageRequest) ([]image.Image, error) ]
+    - 查询图片 [ GetImage(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetImageRequest) ([]image.Image, error) ]
   - 视频 (api/asset/video)
-    - 查询图片 [ GetVideo(clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetVideoRequest) ([]video.Video, error) ]
+    - 查询图片 [ GetVideo(ctx context.Context, clt *core.SDKClient, auth model.RequestHeader, reqBody *image.GetVideoRequest) ([]video.Video, error) ]
 - 转化追踪 (api/ocpc)
-  - 广告主回传转化数据接口 [ UploadConvertData(clt *core.SDKClient, req *ocpc.UploadConvertDataRequest) error ]
-  - 广告主回传无效转化数据接口 [ UploadInvalidConvertData(clt *core.SDKClient, req *ocpc.UploadInvalidConvertDataRequest) error ]
-  - APP 转化数据收集 [ ActionCb(clt *core.SDKClient, req model.ActionCbRequest) error ]
+  - 广告主回传转化数据接口 [ UploadConvertData(ctx context.Context, clt *core.SDKClient, req *ocpc.UploadConvertDataRequest) error ]
+  - 广告主回传无效转化数据接口 [ UploadInvalidConvertData(ctx context.Context, clt *core.SDKClient, req *ocpc.UploadInvalidConvertDataRequest) error ]
+  - APP 转化数据收集 [ ActionCb(ctx context.Context, clt *core.SDKClient, req model.ActionCbRequest) error ]

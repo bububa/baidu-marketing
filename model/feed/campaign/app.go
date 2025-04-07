@@ -3,7 +3,7 @@ package campaign
 // AppInfoShadow 应用推广营销目标下的影子计划
 type AppInfoShadow struct {
 	// AppInfo 计划的影子APP信息
-	AppInfo *AppInfo `json:"appInfo,omitempty"`
+	AppInfo *AppInfo `json:"appinfo,omitempty"`
 	// Status 计划的影子状态
 	Status int `json:"status,omitempty"`
 }
@@ -31,7 +31,7 @@ type AppInfo struct {
 	// 2 - 审核中
 	AppStatus int `json:"appStatus,omitempty"`
 	// OpenUrl 应用商店直投链接，选填，须以market://details?或apps://ProductDetail/开头；或者"0"表示关闭,“1”表示开启. 更新时不填表示清除已有链接
-	OpenUrl string `json:"openUrl,omitempty"`
+	OpenUrl string `json:"openurl,omitempty"`
 	// DownloadType 下载方式。0: 直接下载 1：落地页下载
 	DownloadType int `json:"downloadType,omitempty"`
 }

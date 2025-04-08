@@ -87,7 +87,7 @@ type OcpcTransFeed struct {
 	DeepTransTypes []int `json:"deepTransTypes,omitempty"`
 	// Docid Android渠道包ID
 	// 旧平台Android渠道包对应ID，目前已不支持通过docid新建转化追踪；对于早先使用docid字段进行创建的转化追踪，查询结果仍然会返回docid字段
-	Docid string `json:"docid,omitempty"`
+	Docid uint64 `json:"docid,omitempty"`
 	// AppName 应用名称
 	AppName string `json:"appName,omitempty"`
 	// ApkName 应用包名

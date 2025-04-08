@@ -12,7 +12,7 @@ type AddOcpcTransFeedRequest struct {
 }
 
 func (r AddOcpcTransFeedRequest) Url() string {
-	return util.StringsJoin(model.BASE_URL_FEED, "SearchFeedService/addOcpcTransFeed")
+	return util.StringsJoin(model.BASE_URL_FEED, "OcpcTransFeedService/addOcpcTransFeed")
 }
 
 // AddOcpcTransFeedResponse 添加转化追踪 API Response

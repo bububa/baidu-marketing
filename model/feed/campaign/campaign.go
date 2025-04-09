@@ -19,7 +19,7 @@ type Campaign struct {
 	// 9- 应用调起
 	Subject int `json:"subject,omitempty"`
 	// AppInfo 推广app信息。subject=1时，该字段无效。对象定义参考下文推广app信息
-	AppInfo *AppInfo `json:"appInfo,omitempty"`
+	AppInfo *AppInfo `json:"appinfo,omitempty"`
 	// Budget 推广计划预算。默认为0,表示不限预算。正常取值范围为[50 - 9999999.99]
 	Budget float64 `json:"budget,omitempty"`
 	// StartTime 推广开始日期。默认为null，表示长期投放。格式示例：'2016-12-15'不能早于当天的日期

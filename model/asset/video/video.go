@@ -29,7 +29,7 @@ type Video struct {
 	// 32：视频编辑器
 	Source int `json:"source,omitempty"`
 	// Capacity 视频大小
-	Capacity int `json:"capacity,omitempty"`
+	Capacity float64 `json:"capacity,omitempty"`
 	// Format 视频格式
 	Format string `json:"format,omitempty"`
 	// Width 宽度
@@ -39,9 +39,9 @@ type Video struct {
 	// Duration 时长，单位s
 	Duration int64 `json:"duration,omitempty"`
 	// AddTime 添加时间，unix时间戳，单位毫秒
-	AddTime int64 `json:"addTime,omitempty"`
+	AddTime string `json:"addTime,omitempty"`
 	// ModTime 修改时间，unix时间戳，单位毫秒
-	ModTime int64 `json:"modTime,omitempty"`
+	ModTime string `json:"modTime,omitempty"`
 	// Thumbnail 封面图片url，为空代表该视频没有没有封面图，客户上传的视频肯定有
 	Thumbnail string `json:"thumbnail,omitempty"`
 	// DeliverStatus 投放状态，0：投放中，表示有创意正在引用该视频 1：未投放
